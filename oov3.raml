@@ -1,0 +1,288 @@
+#%RAML 0.8
+baseUri: http://server/broker/rest
+title: OpenShiftV3
+version: alpha1
+mediaType: application/json
+documentation:
+ - title: Overview
+   content: !include doc/overview.md
+ - title: Domains
+   content: !include doc/domains.md
+ - title: Image Streams and Images
+   content: !include doc/image-streams.md
+/domains:
+  get:
+    description: List all domains for your account
+    responses:
+      200:
+        body:
+          example: !include examples/domain-list.json
+  post:
+    description: Create a new domain
+    body:
+      example: !include examples/domain.json
+
+  /{domainID}:
+    get:
+      description: Get a specific domain
+      responses:
+        200:
+          body:
+            example: !include examples/domain.json
+    put:
+      description: Update a domain
+      body:
+        example: !include examples/domain-put.json
+    delete:
+      description: Delete a specific domain
+      responses:
+        200:
+          body:
+            example: |
+              {
+                "success": true
+              }
+/image-streams:
+  get:
+    queryParameters:
+      domainId:
+        description: Filter list by domain
+        type: string
+      visibility:
+        description: Filter by visibility (public, private)
+        type: string
+    description: Lists all image streams that you have access to
+    responses:
+      200:
+        body:
+          example: !include examples/image-streams.json
+  post:
+    description: Create a new image stream
+    body:
+      example: !include examples/image-stream.json
+  /{streamID}:
+    get:
+      description: Get information about an image stream
+      body:
+        example: !include examples/image-stream.json
+    put:
+      description: Update an image stream
+      body:
+        example: !include examples/image-stream.json
+    delete:
+      description: Delete an image stream
+      responses:
+        200:
+          body:
+            example: |
+              {
+                "success": true
+              }
+    /images:
+      get:
+        description: Lists images in the image stream
+        responses:
+          200:
+            body:
+              example: !include examples/images.json
+      post:
+        description: Create a new image in the stream
+        body:
+          example: !include examples/create-image.json
+      /{imageID}:
+        get:
+          description: Get docker image metadata
+          body:
+            example: !include examples/image.json
+        delete:
+          description: Delete an image
+          responses:
+            200:
+              body:
+                example: |
+                  {
+                    "success": true
+                  }
+/services:
+  get:
+    description: Lists all services that your account has access to
+    queryParameters:
+      domainId:
+        description: filter the services owned by a particular domain
+    responses:
+      200:
+        body:
+          example: !include examples/services.json
+  post:
+    description: Create a new service
+    body:
+      example: !include examples/create-service.json
+  /{serviceID}:
+    get:
+      description: Get a specific service definition
+      body:
+        example: !include examples/service.json
+    put:
+      description: Update a service
+      body:
+        example: !include examples/service.json
+    delete:
+      description: Delete a service
+      responses:
+        200:
+          body:
+            example: |
+              {
+                "success": true
+              }
+    /build:
+      get:
+        description: Retrieves the build object for a specific service
+        responses:
+          200:
+            body:
+              example: !include examples/build.json
+      post:
+        description: Start a new build
+        body:
+          example: !include examples/create-build.json
+      /results:
+        get:
+          description: Retrieves list of build results
+          responses:
+            200:
+              body:
+                example: !include examples/build-results.json
+
+    /deployments:
+      get:
+        description: Lists deployments of the given service
+        responses:
+          200:
+            body:
+              example: !include examples/deployments.json
+      post:
+        description: Create a new image in the stream
+        body:
+          example: !include examples/create-deployment.json
+      /{deploymentID}:
+        get:
+          description: Get deployment details
+          body:
+            example: !include examples/deployment.json
+    /links:
+      get:
+        description: Links associated with this service
+        responses:
+          200:
+            body:
+              example: !include examples/links.json
+      post:
+        description: Create a new link between this service and a different service
+        body:
+          example: !include examples/create-link.json
+      /{linkID}:
+        get:
+          description: Get link details
+          body:
+            example: !include examples/link.json
+        put:
+          description: Update a link
+          body:
+            example: !include examples/update-link.json
+        delete:
+          description: Delete a link
+          responses:
+            200:
+              body:
+                example: |
+                  {
+                    "success": true
+                  }
+    /environment-variables:
+      get:
+        description: Environment variables associated with this service
+        responses:
+          200:
+            body:
+              example: !include examples/envvars.json
+      post:
+        description: Create/update environment variables
+        body:
+          example: !include examples/create-envvar.json
+      /{variableName}:
+        get:
+          description: Get environment variable
+          body:
+            example: !include examples/link.json
+        put:
+          description: Update an environment variable's value
+          body:
+            example: !include examples/update-link.json
+        delete:
+          description: Delete an environment variable
+          responses:
+            200:
+              body:
+                example: |
+                  {
+                    "success": true
+                  }
+    /aliases:
+      get:
+        description: List all aliases associated with this service
+        responses:
+          200:
+            body:
+              example: !include examples/aliases.json
+      post:
+        description: Create an alias for this service
+        body:
+          example: !include examples/create-alias.json
+      /{aliasID}:
+        get:
+          description: Get alias
+          body:
+            example: !include examples/alias.json
+        put:
+          description: Update an alias
+          body:
+            example: !include examples/update-alias.json
+        delete:
+          description: Delete an alias
+          responses:
+            200:
+              body:
+                example: |
+                  {
+                    "success": true
+                  }
+/templates:
+  get:
+    description: Lists all templates that your account has access to
+    responses:
+      200:
+        body:
+          example: !include examples/templates.json
+  post:
+    description: Create a new template
+    body:
+      example: !include examples/create-template.json
+  /{templateID}:
+    get:
+      description: Get a specific template
+      body:
+        example: !include examples/template.json
+    put:
+      description: Update a template
+      body:
+        example: !include examples/template.json
+    delete:
+      description: Delete a template
+      responses:
+        200:
+          body:
+            example: |
+              {
+                "success": true
+              }

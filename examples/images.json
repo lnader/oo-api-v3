@@ -1,0 +1,35 @@
+{
+  "data":
+  [
+    {
+      "id":"nginx-10273491827349324",
+      "environment":
+      {
+        "VAR3": "value3",
+        "VAR4": "value4"
+      },
+      "ports": {
+        "web": 8080
+      },
+      "commands": [
+        "command-1",
+        "command-2"
+      ]
+    },
+    {
+      "id":"nginx-10273491827349323",
+      "environment":
+      {
+        "VAR3": "value1",
+        "VAR4": "value2"
+      },
+      "ports": {
+        "web": 8080
+      },
+      "commands": [
+        "command-1",
+        "command-2"
+      ]
+    }
+  ]
+}

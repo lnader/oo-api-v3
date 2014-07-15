@@ -1,0 +1,61 @@
+{
+  "data":
+  [
+    {
+      "owner": "adomain-id",
+      "visibility": "public",
+      "name": "nginx",
+      "shared-with": [
+         "user2@someplace.com",
+         "user4@example.com"
+      ],
+      "environment": 
+      {
+        "VAR1": "value1",
+        "VAR2": "value2"
+      },
+      "active-image": 
+      {
+        "id":"nginx-10273491827349324",
+        "environment":
+        {
+          "VAR3": "value3",
+          "VAR4": "value4"
+        },
+        "ports": {
+          "web": 8080
+        },
+        "commands": [
+          "command-1",
+          "command-2"
+        ]
+      }
+    },
+    {
+      "owner": "bdomain-id",
+      "visibility": "private",
+      "name": "postgresql9.5",
+      "shared-with": [
+      ],
+      "environment": 
+      {
+        "VARA": "value1",
+        "VARB": "value2"
+      },
+      "active-image": 
+      {
+        "id":"postgres-10273491827349324",
+        "environment":
+        {
+          "VAR3": "value3",
+          "VAR4": "value4"
+        },
+        "ports": {
+          "web": 60000
+        },
+        "commands": [
+        ]
+      }
+    }
+  ]
+}
