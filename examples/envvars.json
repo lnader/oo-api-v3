@@ -1,16 +1,7 @@
 {
   "data":
-  {
-    "id": "53c4249f076573c0f4000001",
-    "suffix": "dev.rhcloud.com",
-    "name": "mydomain",
-    "members": [
-       {
-         "login": "adminuser",
-         "role": "admin",
-         "type": "user",
-         "owner": true
-       }
-    ]
-  }
+  [
+    { "name": "var1", "value": "value1" },
+    { "name": "var2", "value": "value2" }
+  ]
 }

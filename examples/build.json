@@ -2,15 +2,8 @@
   "data":
   {
     "id": "53c4249f076573c0f4000001",
-    "suffix": "dev.rhcloud.com",
-    "name": "mydomain",
-    "members": [
-       {
-         "login": "adminuser",
-         "role": "admin",
-         "type": "user",
-         "owner": true
-       }
-    ]
+    "imageStream": "server/name",
+    "type": "docker-build",
+    "repository": "openshift/dockerrepo"
   }
 }

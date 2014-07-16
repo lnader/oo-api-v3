@@ -132,24 +132,6 @@ The existing API will continue to be supported through 3.x,
 with concepts mapped as closely as possible to the new model.</p>
 
                     
-                        <h3 id="Projects"><a href="#Projects">Projects</a></h3>
-                        <p>Projects are a similar concept to v2 domains. A project is a grouping of services with shared
-access control and resource limits. Applications can be assembled from services in a project
-by linking them together via service endpoints.</p>
-
-                    
-                        <h3 id="Image-Streams-and-Images"><a href="#Image-Streams-and-Images">Image Streams and Images</a></h3>
-                        <p>An image stream is a collection of images that share the same metadata. It contains multiple
-versions of an image as it evolves over time with new builds of the codebase. </p>
-<p>An image stream is one of the sources of image metadata. Metadata for an image can come from one of three places:</p>
-<ul>
-<li>The original image binary as specified by the Dockerfile - this includes environment variables, command to execute, ports exposed, etc.</li>
-<li>The image definition in the OpenShift environment. This can be used to override metadata from the Dockerfile</li>
-<li>The image stream which overrides individual image metadata.</li>
-</ul>
-<p>Some images can be used as services while others can be used as single execution jobs.</p>
-
-                    
                 </div>
 
                 
@@ -184,7 +166,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_projects_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>List all projects for your account</p>
+                            <p>List all projects for your account.</p>
+<p>Projects are a similar concept to v2 domains. A project is a grouping of services 
+with shared access control and resource limits. Applications can be assembled 
+from services in a project by linking them together via service endpoints.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -215,7 +200,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>List all projects for your account</p>
+                        <div class="alert alert-info"><p>List all projects for your account.</p>
+<p>Projects are a similar concept to v2 domains. A project is a grouping of services 
+with shared access control and resource limits. Applications can be assembled 
+from services in a project by linking them together via service endpoints.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -355,7 +343,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
     "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"myproject"</span></span>,
     "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
        {
          "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
@@ -410,6 +398,8 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     
                         <span class="badge badge_delete">delete</span>
                     
+                        <span class="badge badge_post">post</span>
+                    
                 </span>
                 <span class="parent"></span>/project/{projectID}
             </a>
@@ -441,6 +431,15 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_delete">delete</span>
                         <div class="method_description">
                             <p>Delete a project</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_project__projectID__post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        <div class="method_description">
+                            <p>Instantiate a template in the given project</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -530,7 +529,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
     "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"myproject"</span></span>,
     "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
        {
          "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
@@ -620,7 +619,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"newdomain-name"</span>
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"newproject-name"</span>
   </span>}
 </span>}
 </pre>
@@ -730,6 +729,84 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
+        <div class="modal fade" tabindex="0" id="_project__projectID__post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent"></span>/project/{projectID}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Instantiate a template in the given project</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_project__projectID__post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_project__projectID__post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>projectID</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">templateId</span>": <span class="hljs-value"><span class="hljs-string">"the-template-id"</span>
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 </div>
 
 
@@ -769,7 +846,11 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_image_streams_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Lists all image streams that you have access to</p>
+                            <p>Lists all image streams that you have access to.</p>
+<p>An image stream is a collection of images that share the same metadata. It contains 
+multiple versions of an image as it evolves over time with new builds of the codebase. 
+An image stream may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the stream.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -800,7 +881,11 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Lists all image streams that you have access to</p>
+                        <div class="alert alert-info"><p>Lists all image streams that you have access to.</p>
+<p>An image stream is a collection of images that share the same metadata. It contains 
+multiple versions of an image as it evolves over time with new builds of the codebase. 
+An image stream may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the stream.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -886,63 +971,24 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
+  "<span class="hljs-attribute">list</span>":
   <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-string">"adomain-id"</span></span>,
       "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
-      "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
-         <span class="hljs-string">"user2@someplace.com"</span>,
-         <span class="hljs-string">"user4@example.com"</span>
-      ]</span>,
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
       "<span class="hljs-attribute">environment</span>": 
       <span class="hljs-value">{
         "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
         "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
       </span>}</span>,
-      "<span class="hljs-attribute">active-image</span>": 
-      <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
-        "<span class="hljs-attribute">environment</span>":
-        <span class="hljs-value">{
-          "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-          "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-          <span class="hljs-string">"command-1"</span>,
-          <span class="hljs-string">"command-2"</span>
-        ]
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-string">"bdomain-id"</span></span>,
-      "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"private"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"postgresql9.5"</span></span>,
-      "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
+      "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+          "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+        </span>}
       ]</span>,
-      "<span class="hljs-attribute">environment</span>": 
-      <span class="hljs-value">{
-        "<span class="hljs-attribute">VARA</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-        "<span class="hljs-attribute">VARB</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">active-image</span>": 
-      <span class="hljs-value">{
-        "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"postgres-10273491827349324"</span></span>,
-        "<span class="hljs-attribute">environment</span>":
-        <span class="hljs-value">{
-          "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-          "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-          "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">60000</span>
-        </span>}</span>,
-        "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        ]
-      </span>}
+      "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
     </span>}
   ]
 </span>}
@@ -1008,34 +1054,20 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
-    "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
-       <span class="hljs-string">"user2@someplace.com"</span>,
-       <span class="hljs-string">"user4@example.com"</span>
-    ]</span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
     "<span class="hljs-attribute">environment</span>": 
     <span class="hljs-value">{
-      "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
     </span>}</span>,
-    "<span class="hljs-attribute">active-image</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
-      "<span class="hljs-attribute">max-instances</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-      <span class="hljs-string">"environment"</span>:
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
       {
-        "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-        "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        <span class="hljs-string">"command-1"</span>,
-        <span class="hljs-string">"command-2"</span>
-      ]
-    </span>}
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
   </span>}
 </span>}
 </pre>
@@ -1187,34 +1219,20 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
-    "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
-       <span class="hljs-string">"user2@someplace.com"</span>,
-       <span class="hljs-string">"user4@example.com"</span>
-    ]</span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
     "<span class="hljs-attribute">environment</span>": 
     <span class="hljs-value">{
-      "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
     </span>}</span>,
-    "<span class="hljs-attribute">active-image</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
-      "<span class="hljs-attribute">max-instances</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-      <span class="hljs-string">"environment"</span>:
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
       {
-        "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-        "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        <span class="hljs-string">"command-1"</span>,
-        <span class="hljs-string">"command-2"</span>
-      ]
-    </span>}
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
   </span>}
 </span>}
 </pre>
@@ -1296,34 +1314,20 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
-    "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
-       <span class="hljs-string">"user2@someplace.com"</span>,
-       <span class="hljs-string">"user4@example.com"</span>
-    ]</span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
     "<span class="hljs-attribute">environment</span>": 
     <span class="hljs-value">{
-      "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
     </span>}</span>,
-    "<span class="hljs-attribute">active-image</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
-      "<span class="hljs-attribute">max-instances</span>": <span class="hljs-value"><span class="hljs-number">0</span>
-      <span class="hljs-string">"environment"</span>:
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
       {
-        "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-        "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        <span class="hljs-string">"command-1"</span>,
-        <span class="hljs-string">"command-2"</span>
-      ]
-    </span>}
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
   </span>}
 </span>}
 </pre>
@@ -1436,10 +1440,24 @@ versions of an image as it evolves over time with new builds of the codebase. </
 </div>
 
 
-    <div class="panel panel-white">
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_images" class="panel-title">/images</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__image_stream__streamID__images">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__images">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -1447,27 +1465,30 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_post">post</span>
                     
                 </span>
-                <span class="parent">/image-stream/{streamID}</span>/images
+                <span class="parent"></span>/images
             </a>
         </h4>
     </div>
-    <div id="panel__image_stream__streamID__images" class="panel-collapse collapse">
+    <div id="panel__images" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__images_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_images_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Lists images in the image stream</p>
+                            <p>Lists images visible to you</p>
+<p>Images can be stored in Openshift servers or can be references to images from
+an external repository. The metadata that Openshift stores for an image will augment
+the metadata that has already been specified in the image through its Dockerfile.</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__images_post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_images_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Create a new image in the stream</p>
+                            <p>Create a new image definition</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -1478,47 +1499,59 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__images_get">
+        <div class="modal fade" tabindex="0" id="_images_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/image-stream/{streamID}</span>/images
+                            <span class="parent"></span>/images
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Lists images in the image stream</p>
+                        <div class="alert alert-info"><p>Lists images visible to you</p>
+<p>Images can be stored in Openshift servers or can be references to images from
+an external repository. The metadata that Openshift stores for an image will augment
+the metadata that has already been specified in the image through its Dockerfile.</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__images_get_request" data-toggle="tab">Request</a>
+                                <a href="#_images_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_image_stream__streamID__images_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_images_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__images_get_request">
+                            <div class="tab-pane active" id="_images_get_request">
                                 
-                                    <h3>URI Parameters</h3>
+
+                                
+
+                                
+                                    <h3>Query Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>streamID</strong>:
+                                                <strong>streamId</strong>
                                                 <em>
                                                     
-                                                        required
                                                     
-                                                    (string)
+                                                        (string)
+                                                    
                                                 </em>
+
+                                                <p>Filter list by stream</p>
+
+
+                                                
 
                                                 
                                             </li>
@@ -1527,14 +1560,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                 
 
                                 
-
-                                
-
-                                
                             </div>
 
                             
-                                <div class="tab-pane" id="_image_stream__streamID__images_get_response">
+                                <div class="tab-pane" id="_images_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -1556,33 +1585,24 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx-19273412433342"</span></span>,
+      "<span class="hljs-attribute">image-stream</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
       "<span class="hljs-attribute">environment</span>":
       <span class="hljs-value">{
-        "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-        "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
+        "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+        "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
       </span>}</span>,
-      "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-      </span>}</span>,
+      "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+          "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+        </span>}
+      ]</span>,
       "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        <span class="hljs-string">"command-1"</span>,
-        <span class="hljs-string">"command-2"</span>
-      ]
-    </span>},
-    {
-      "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349323"</span></span>,
-      "<span class="hljs-attribute">environment</span>":
-      <span class="hljs-value">{
-        "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-        "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-        <span class="hljs-string">"command-1"</span>,
-        <span class="hljs-string">"command-2"</span>
+        {
+          "<span class="hljs-attribute">memory-dump</span>": <span class="hljs-value"><span class="hljs-string">"/bin/dump"</span>
+        </span>}
       ]
     </span>}
   ]
@@ -1602,48 +1622,31 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__images_post">
+        <div class="modal fade" tabindex="0" id="_images_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent">/image-stream/{streamID}</span>/images
+                            <span class="parent"></span>/images
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Create a new image in the stream</p>
+                        <div class="alert alert-info"><p>Create a new image definition</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__images_post_request" data-toggle="tab">Request</a>
+                                <a href="#_images_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__images_post_request">
-                                
-                                    <h3>URI Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
+                            <div class="tab-pane active" id="_images_post_request">
                                 
 
                                 
@@ -1665,19 +1668,17 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span></span>,
     "<span class="hljs-attribute">url</span>":<span class="hljs-value"><span class="hljs-string">"https://registry.hub.docker.com/u/library/nginx"</span></span>,
     "<span class="hljs-attribute">environment</span>":
     <span class="hljs-value">{
-      "<span class="hljs-attribute">VAR3</span>": <span class="hljs-value"><span class="hljs-string">"value3"</span></span>,
-      "<span class="hljs-attribute">VAR4</span>": <span class="hljs-value"><span class="hljs-string">"value4"</span>
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
     </span>}</span>,
-    "<span class="hljs-attribute">ports</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">web</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
-      <span class="hljs-string">"command-1"</span>,
-      <span class="hljs-string">"command-2"</span>
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
     ]
   </span>}
 </span>}
@@ -1699,38 +1700,41 @@ versions of an image as it evolves over time with new builds of the codebase. </
 </div>
 
 
-    <div class="panel panel-white">
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_image__imageID_" class="panel-title">/image/{imageID}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__image_stream__streamID__images__imageID_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__image__imageID_">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
                     
-                        <span class="badge badge_delete">delete</span>
-                    
                 </span>
-                <span class="parent">/image-stream/{streamID}/images</span>/{imageID}
+                <span class="parent"></span>/image/{imageID}
             </a>
         </h4>
     </div>
-    <div id="panel__image_stream__streamID__images__imageID_" class="panel-collapse collapse">
+    <div id="panel__image__imageID_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__images__imageID__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image__imageID__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Get docker image metadata</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__images__imageID__delete" class="list-group-item">
-                        <span class="badge badge_delete">delete</span>
-                        <div class="method_description">
-                            <p>Delete an image</p>
+                            <p>Get image definition</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -1741,46 +1745,34 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__images__imageID__get">
+        <div class="modal fade" tabindex="0" id="_image__imageID__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/image-stream/{streamID}/images</span>/{imageID}
+                            <span class="parent"></span>/image/{imageID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Get docker image metadata</p>
+                        <div class="alert alert-info"><p>Get image definition</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__images__imageID__get_request" data-toggle="tab">Request</a>
+                                <a href="#_image__imageID__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__images__imageID__get_request">
+                            <div class="tab-pane active" id="_image__imageID__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
                                         
                                             <li>
                                                 <strong>imageID</strong>:
@@ -1817,15 +1809,23 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx-19273412433342"</span></span>,
+    "<span class="hljs-attribute">image-stream</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
+    "<span class="hljs-attribute">environment</span>":
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">commands</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">memory-dump</span>": <span class="hljs-value"><span class="hljs-string">"/bin/dump"</span>
+      </span>}
     ]
   </span>}
 </span>}
@@ -1844,115 +1844,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__images__imageID__delete">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_delete">delete</span>
-                            <span class="parent">/image-stream/{streamID}/images</span>/{imageID}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Delete an image</p>
 </div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_image_stream__streamID__images__imageID__delete_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                                <li>
-                                    <a href="#_image_stream__streamID__images__imageID__delete_response" data-toggle="tab">Response</a>
-                                </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__images__imageID__delete_request">
-                                
-                                    <h3>URI Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                            <li>
-                                                <strong>imageID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
-                                
-
-                                
-
-                                
-
-                                
-                            </div>
-
-                            
-                                <div class="tab-pane" id="_image_stream__streamID__images__imageID__delete_response">
-                                    
-                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
-                                        
-
-                                        
-
-                                        
-                                            <h3>Body</h3>
-                                            
-                                                <p><strong>Type: application/json</strong></p>
-
-                                                
-
-                                                
-                                                    <p>
-                                                        <small>
-                                                            <strong>Example</strong>:
-                                                            <pre>{
-  "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}
-</pre>
-                                                        </small>
-                                                    </p>
-                                                
-                                            
-                                        
-                                    
-                                </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-</div>
-
-
-
-
 
 
 
@@ -1992,6 +1884,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Lists all services that your account has access to</p>
+<p>Services can be public or owned by a project. They contain a template of a pod and
+reference image streams that supply the images for those templates. A service may 
+be configured to react to an image being pushed to an image stream by initiating a 
+deployment. Deployments are associated with a service and make use of 
+Kubernetes replication controllers to manage pods in a cluster.
+For deployments, a service contains a policy that constrains how deployments can occur.
+For example, it may require that there exist at least 2 operational pods at all times.
+A deployment needs to operate under those constraints when making changes.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -2023,6 +1923,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info"><p>Lists all services that your account has access to</p>
+<p>Services can be public or owned by a project. They contain a template of a pod and
+reference image streams that supply the images for those templates. A service may 
+be configured to react to an image being pushed to an image stream by initiating a 
+deployment. Deployments are associated with a service and make use of 
+Kubernetes replication controllers to manage pods in a cluster.
+For deployments, a service contains a policy that constrains how deployments can occur.
+For example, it may require that there exist at least 2 operational pods at all times.
+A deployment needs to operate under those constraints when making changes.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -2049,7 +1957,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                     <ul>
                                         
                                             <li>
-                                                <strong>domainId</strong>
+                                                <strong>projectId</strong>
                                                 <em>
                                                     
                                                     
@@ -2057,7 +1965,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     
                                                 </em>
 
-                                                <p>filter the services owned by a particular domain</p>
+                                                <p>filter the services owned by a particular project</p>
 
 
                                                 
@@ -2091,22 +1999,42 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
+      "<span class="hljs-attribute">desiredState</span>": 
+      <span class="hljs-value">{
+        "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+        "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
+        "<span class="hljs-attribute">podTemplate</span>": 
+        <span class="hljs-value">{
+           "<span class="hljs-attribute">desiredState</span>":
+           <span class="hljs-value">{
+             "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+             "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+               {
+                 "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+                 "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+               </span>}
+             ]</span>,
+             "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+           </span>}</span>,
+           "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+             "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+           </span>}
+        </span>}
+      </span>}
     ]
   </span>}
-</span>}
-</pre>
+}
+</span></pre>
                                                         </small>
                                                     </p>
                                                 
@@ -2167,17 +2095,27 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+    "<span class="hljs-attribute">desiredState</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">podTemplate</span>": 
+      <span class="hljs-value">{
+         "<span class="hljs-attribute">desiredState</span>":
+         <span class="hljs-value">{
+           "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+           "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+             {
+               "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+               "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+             </span>}
+           ]
+         </span>}
+      </span>}
+    </span>}
   </span>}
 </span>}
 </pre>
@@ -2335,6 +2273,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
     <span class="hljs-value">{
       "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
       "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+      "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
       "<span class="hljs-attribute">podTemplate</span>": 
       <span class="hljs-value">{
          "<span class="hljs-attribute">desiredState</span>":
@@ -2440,6 +2382,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
     <span class="hljs-value">{
       "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
       "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+      "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
       "<span class="hljs-attribute">podTemplate</span>": 
       <span class="hljs-value">{
          "<span class="hljs-attribute">desiredState</span>":
@@ -2688,19 +2634,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                             <strong>Example</strong>:
                                                             <pre>{
   "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  <span class="hljs-value">[
+    { "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var1"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span> </span>},
+    { "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var2"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span> </span>}
+  ]
 </span>}
 </pre>
                                                         </small>
@@ -2779,19 +2716,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <strong>Example</strong>:
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  <span class="hljs-value">[
+    { "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var1"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span> </span>},
+    { "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var2"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span> </span>}
+  ]
 </span>}
 </pre>
                                                 </small>
@@ -2937,20 +2865,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                 <small>
                                                     <strong>Example</strong>:
                                                     <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var1"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span> </span>}
 </span>}
 </pre>
                                                 </small>
@@ -3040,20 +2955,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                 <small>
                                                     <strong>Example</strong>:
                                                     <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">data</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"var1"</span></span>, "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span> </span>}
 </span>}
 </pre>
                                                 </small>
@@ -3217,7 +3119,12 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_deployments_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Lists deployments of the given service</p>
+                            <p>Lists active deployments in the current project</p>
+<p>Deployments effect change in a service such as scaling up, down, updating the 
+current image, etc. Deployments may use different policies for carrying out
+the change. For example, a rolling update with a single pod change at a time, or
+a batch update, etc. Deployments make use of Kubernetes replicationControllers
+to bring about the changes.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -3248,7 +3155,12 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Lists deployments of the given service</p>
+                        <div class="alert alert-info"><p>Lists active deployments in the current project</p>
+<p>Deployments effect change in a service such as scaling up, down, updating the 
+current image, etc. Deployments may use different policies for carrying out
+the change. For example, a rolling update with a single pod change at a time, or
+a batch update, etc. Deployments make use of Kubernetes replicationControllers
+to bring about the changes.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -3295,20 +3207,38 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1234235172374"</span></span>,
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"the-service-id"</span></span>,
+      "<span class="hljs-attribute">replicationControllers</span>": <span class="hljs-value">[
+        <span class="hljs-string">"replication-controller-id1"</span>,
+        <span class="hljs-string">"replication-controller-id2"</span>,
+        <span class="hljs-string">"replication-controller-id3"</span>
+      ]</span>,
+      "<span class="hljs-attribute">currentState</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">containers</span>": <span class="hljs-value">[{
+          "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"dockerfile/nginx"</span></span>,
+          "<span class="hljs-attribute">ports</span>": <span class="hljs-value">[{"<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>, "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>}]
+        </span>}]</span>,
+      }</span>,
+      "<span class="hljs-attribute">desiredState</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">containers</span>": <span class="hljs-value">[{
+          "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"dockerfile/nginx/v2tag"</span></span>,
+          "<span class="hljs-attribute">ports</span>": <span class="hljs-value">[{"<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>, "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>}]
+        </span>}]</span>,
+      }</span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"active"</span>
+    </span>}
+  ]
 </span>}
 </pre>
                                                         </small>
@@ -3369,19 +3299,19 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                 <small>
                                                     <strong>Example</strong>:
                                                     <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+  "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1234235172374"</span></span>,
+    "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"the-service-id"</span></span>,
+    "<span class="hljs-attribute">desiredState</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">containers</span>": <span class="hljs-value">[{
+        "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"dockerfile/nginx/v2tag"</span></span>,
+        "<span class="hljs-attribute">ports</span>": <span class="hljs-value">[{"<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>, "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>}]
+      </span>}]
+    </span>}
   </span>}
 </span>}
 </pre>
@@ -3508,19 +3438,35 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                 <small>
                                                     <strong>Example</strong>:
                                                     <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+  "<span class="hljs-attribute">object</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1234235172374"</span></span>,
+    "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"the-service-id"</span></span>,
+    "<span class="hljs-attribute">replicationControllers</span>": <span class="hljs-value">[
+      <span class="hljs-string">"replication-controller-id1"</span>,
+      <span class="hljs-string">"replication-controller-id2"</span>,
+      <span class="hljs-string">"replication-controller-id3"</span>
+    ]</span>,
+    "<span class="hljs-attribute">currentState</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">containers</span>": <span class="hljs-value">[{
+        "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"dockerfile/nginx"</span></span>,
+        "<span class="hljs-attribute">ports</span>": <span class="hljs-value">[{"<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>, "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>}]
+      </span>}]</span>,
+    }</span>,
+    "<span class="hljs-attribute">desiredState</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+      "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">containers</span>": <span class="hljs-value">[{
+        "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"dockerfile/nginx/v2tag"</span></span>,
+        "<span class="hljs-attribute">ports</span>": <span class="hljs-value">[{"<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>, "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>}]
+      </span>}]</span>,
+    }</span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"active"</span>
   </span>}
 </span>}
 </pre>
@@ -3577,7 +3523,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_links_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Links associated with this service</p>
+                            <p>List of links between services in your account</p>
+<p>Unlike a Docker link, a Link in OpenShift defines a relationship between services
+which may be composed by multiple Docker images. A link may include additional metadata
+about the relationship such as the algorithm to use to distribute requests.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -3608,7 +3557,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Links associated with this service</p>
+                        <div class="alert alert-info"><p>List of links between services in your account</p>
+<p>Unlike a Docker link, a Link in OpenShift defines a relationship between services
+which may be composed by multiple Docker images. A link may include additional metadata
+about the relationship such as the algorithm to use to distribute requests.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -3630,6 +3582,45 @@ versions of an image as it evolves over time with new builds of the codebase. </
 
                                 
 
+                                
+                                    <h3>Query Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>projectId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>filter the links owned by a particular project</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>serviceId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>filter the links attached to a particular service</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
                                 
 
                                 
@@ -3655,20 +3646,21 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+      "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+        "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+      </span>}
+      <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
+    </span>}
+  ]
 </span>}
 </pre>
                                                         </small>
@@ -3732,16 +3724,15 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+    "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+    "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+      "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+    </span>}
+    <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
   </span>}
 </span>}
 </pre>
@@ -3893,16 +3884,15 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+    "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+    "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+      "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+    </span>}
+    <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
   </span>}
 </span>}
 </pre>
@@ -3984,16 +3974,15 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+    "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+    "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+      "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+    </span>}
+    <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
   </span>}
 </span>}
 </pre>
@@ -4142,7 +4131,9 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_aliases_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>List all aliases associated with this service</p>
+                            <p>List all aliases visible to you</p>
+<p>Aliases in v3 perform the same function as aliases in v2. The main difference
+is that in v3 an alias is associated with a service, not an application.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -4173,7 +4164,9 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>List all aliases associated with this service</p>
+                        <div class="alert alert-info"><p>List all aliases visible to you</p>
+<p>Aliases in v3 perform the same function as aliases in v2. The main difference
+is that in v3 an alias is associated with a service, not an application.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -4195,6 +4188,28 @@ versions of an image as it evolves over time with new builds of the codebase. </
 
                                 
 
+                                
+                                    <h3>Query Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>serviceId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>filter aliases by associated service</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
                                 
 
                                 
@@ -4220,21 +4235,16 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
-</span>}
+  <span class="hljs-string">"list"</span>:
+  [
+    {
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"myalias"</span>,
+    <span class="hljs-string">"ssl_certificate"</span>: <span class="hljs-string">"-----BEGIN CERTIFICATE-----\nMIIDoDCCAogCCQDzF8AJCHnrbjANBgkqhkiG9w0BAQUFADCBkTELMAkGA1UEBhMC\nVVMxCzAJBgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxDzANBgNVBAoMBnJl\nZGhhdDESMBAGA1UECwwJb3BlbnNoaWZ0MRIwEAYDVQQDDAlvcGVuc2hpZnQxKDAm\nBgkqhkiG9w0BCQEWGWluZm9Ab3BlbnNoaWZ0LnJlZGhhdC5jb20wHhcNMTMwMjE5\nMjExMTQ4WhcNMTQwMjE5MjExMTQ4WjCBkTELMAkGA1UEBhMCVVMxCzAJBgNVBAgM\nAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxDzANBgNVBAoMBnJlZGhhdDESMBAGA1UE\nCwwJb3BlbnNoaWZ0MRIwEAYDVQQDDAlvcGVuc2hpZnQxKDAmBgkqhkiG9w0BCQEW\nGWluZm9Ab3BlbnNoaWZ0LnJlZGhhdC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IB\nDwAwggEKAoIBAQDAEbH4MCi3iIDP1HS+/Xwu8SjdSc5WJX6htV7hJpmFZ8HohV/8\nba0v6aM9IJIIt+sIe2J62t/9G3leOdIHBxeACN4fV2l/iA/fvxvlnFKeD7sHm9Oc\nYj1H6YYJ57sIOf/oLDpJl6l3Rw8VC3+3W0/lzlVpA8qt7fpkiW7XQJCPplUSrdVC\n3okQ2T5NAod5+wVIOqELgE5bLX1LRs5VPsjytHkJ7rKXs55FHR3kpsoImn5xD0Ky\n6lRn8cIMolQoyN5HIGr8f5P+07hrHibve8jje/DKTssb5yEUAEmh6iGHQsRAnsUW\nQoIEUOLqQCu9re2No4G52Kl2xQIjyJF7rCfxAgMBAAEwDQYJKoZIhvcNAQEFBQAD\nggEBAGHrya/ZkiAje2kHsOajXMlO2+y1iLfUDcRLuEWpUa8sI5EM4YtemQrsupFp\n8lVYG5C4Vh8476oF9t8Wex5eH3ocwbSvPIUqE07hdmrubiMq4wxFVRYq7g9lHAnx\nl+bABuN/orbAcPcGAGg7AkXVoAc3Fza/ZcgMcw7NOtDTEss70V9OdgCfQUJL0KdO\nhCO8bQ1EaEiq6zEh8RpZe8mu+f/GYATX1I+eJUc6F6cn83oJjE9bqAVzk7TzTHeK\nEBKN50C14wWtXeG7n2+ugaVO+0xnvHeUrQBLHSRyOHqxXrQQ5XmzcaBiyI0f2IQM\nHst1BVXyX0n/L/ZoYYsv5juJmDo=\n-----END CERTIFICATE-----"</span>,
+    <span class="hljs-string">"private_key"</span>: <span class="hljs-string">"-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAwBGx+DAot4iAz9R0vv18LvEo3UnOViV+obVe4SaZhWfB6IVf\n/G2tL+mjPSCSCLfrCHtietrf/Rt5XjnSBwcXgAjeH1dpf4gP378b5ZxSng+7B5vT\nnGI9R+mGCee7CDn/6Cw6SZepd0cPFQt/t1tP5c5VaQPKre36ZIlu10CQj6ZVEq3V\nQt6JENk+TQKHefsFSDqhC4BOWy19S0bOVT7I8rR5Ce6yl7OeRR0d5KbKCJp+cQ9C\nsupUZ/HCDKJUKMjeRyBq/H+T/tO4ax4m73vI43vwyk7LG+chFABJoeohh0LEQJ7F\nFkKCBFDi6kArva3tjaOBudipdsUCI8iRe6wn8QIDAQABAoIBAG/on4JVRRQSw8LU\nLiWt+jI7ryyoOUH2XL8JtzuGSwLwvomlVJT2rmbxQXx3Qr8zsgziHzIn30RRQrkF\nBXu0xRuDjzBBtSVqeJ1Mc4uoNncEAVxgjb5bewswZDnXPCGB8bosMtX4OPRXgdEo\nPwTtfjMOsrMaU3hd5Xu4m81tQA2BvwOlx8aYDyH0jeTnervc5uRGbeTBQG4Bu40E\nrWNmXvgNq2EzTAwbbN6Ma97gw9KgXnM4Nlh29Fxb5TBeUU9lkzuTZAZIDXKIm7AG\nUwMbj/A038yAumYQtThTE/3e4W3rn7F2Vko900bC4aAC1KQOAzjIeQqzqkVxWTWq\n4SUFQAECgYEA/ODwifOTuI6hdZK6JRgc4wp6Rc0fkqHuxLzABXoIGuSVlWyimqIN\nZySAkpo5EW6DNraRJxNCOBmWeGPEhHGrea+JPiPEwCK0F7SxvSmg3jzNzw3Es31T\necET7eDwuSOY9v4XDzLyiXXkEUUReD7Ng2hEYL+HaQrl5jWj4lxgq/ECgYEAwnCb\nKrz7FwX8AqtFAEi6uUrc12k1xYKQfrwSxbfdK2vBBUpgB71Iq/fqP+1BittEljDG\n8f4jEtMBFfEPhLzGIHaI3UiHUHXS4GetA77TRgR8lnKKpj1FcMIY2iKU479707O5\nQ08pgWRUDQ8BVg2ePgbo5QjLMc/rv7UF3AHvPAECgYB/auAIwqDGN6gHU/1TP4ke\npWLi1O55tfpXSzv+BnUbB96PQgPUop7aP7xBIlBrBiI7aVZOOBf/qHT3CF421geu\n8tHWa7NxlIrl/vgn9lfGYyDYmXlpb1amXLEsBVGGF/e1TGZWFDe9J5fZU9HvosVu\n1xTNIvSZ6xHYI2MGZcGYIQKBgEYeebaV5C7PV6xWu1F46O19U9rS9DM//H/XryVi\nQv4vo7IWuj7QQe7SPsXC98ntfPR0rqoCLf/R3ChfgGsr8H8wf/bc+v9HHj8S5E/f\ndy1e3Nccg2ej3PDm7jNsGSlwmmUkAQGHAL7KwYzcBm1UB+bycvZ1j2FtS+UckPpg\nMDgBAoGALD8PkxHb4U4DtbNFSYRrUdvS9heav/yph3lTMfifNkOir36io6v8RPgb\nD2bHKKZgmYlTgJrxD45Er9agC5jclJO35QRU/OfGf3GcnABkBI7vlvUKADAo65Sq\nweZkdJnbrIadcvLOHOzkKC9m+rxFTC9VoN1dwK2zwYvUXfa1VJA=\n-----END RSA PRIVATE KEY-----"</span>,
+    <span class="hljs-string">"pass_phrase"</span>: <span class="hljs-string">"abcd"</span>
+    }
+  ]
+}
 </pre>
                                                         </small>
                                                     </p>
@@ -4707,7 +4717,11 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_builds_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Retrieves a list of build objects scoped to your domain/project</p>
+                            <p>Retrieves a list of builds visible to you</p>
+<p>A build is associated with an image stream and can be triggered by a webhook
+on Github. It can either be a Docker build or a source build based on a 
+specified image. When a build completes, it posts a new image to the image
+stream that it&#39;s associated with.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -4716,7 +4730,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     <a href="#" data-toggle="modal" data-target="#_builds_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Start a new build</p>
+                            <p>Create a new build</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -4738,7 +4752,11 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Retrieves a list of build objects scoped to your domain/project</p>
+                        <div class="alert alert-info"><p>Retrieves a list of builds visible to you</p>
+<p>A build is associated with an image stream and can be triggered by a webhook
+on Github. It can either be a Docker build or a source build based on a 
+specified image. When a build completes, it posts a new image to the image
+stream that it&#39;s associated with.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -4785,21 +4803,17 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000002"</span></span>,
+      "<span class="hljs-attribute">imageStream</span>": <span class="hljs-value"><span class="hljs-string">"server/name"</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"source-build"</span></span>,
+      "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-string">"openshift/myapp"</span>
+    </span>}
+  ]
 </span>}
+
 </pre>
                                                         </small>
                                                     </p>
@@ -4826,7 +4840,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Start a new build</p>
+                        <div class="alert alert-info"><p>Create a new build</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -4862,16 +4876,445 @@ versions of an image as it evolves over time with new builds of the codebase. </
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
+    "<span class="hljs-attribute">imageStream</span>": <span class="hljs-value"><span class="hljs-string">"server/name"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"docker-build"</span></span>,
+    "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-string">"openshift/dockerrepo"</span>
+  </span>}
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_build__buildId_" class="panel-title">/build/{buildId}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__build__buildId_">
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
+                <span class="parent"></span>/build/{buildId}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__build__buildId_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_build__buildId__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        <div class="method_description">
+                            <p>Retrieve a single build definition</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_build__buildId__put" class="list-group-item">
+                        <span class="badge badge_put">put</span>
+                        <div class="method_description">
+                            <p>Update a build definition</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_build__buildId__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        <div class="method_description">
+                            <p>Delete a build definition</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_build__buildId__post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        <div class="method_description">
+                            <p>Launch a build</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" tabindex="0" id="_build__buildId__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/build/{buildId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Retrieve a single build definition</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_build__buildId__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_build__buildId__get_response" data-toggle="tab">Response</a>
+                                </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_build__buildId__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>buildId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_build__buildId__get_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        
+
+                                        
+
+                                        
+                                            <h3>Body</h3>
+                                            
+                                                <p><strong>Type: application/json</strong></p>
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{
+  "<span class="hljs-attribute">data</span>":
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+    "<span class="hljs-attribute">imageStream</span>": <span class="hljs-value"><span class="hljs-string">"server/name"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"docker-build"</span></span>,
+    "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-string">"openshift/dockerrepo"</span>
+  </span>}
+</span>}
+</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_build__buildId__put">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_put">put</span>
+                            <span class="parent"></span>/build/{buildId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Update a build definition</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_build__buildId__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_build__buildId__put_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>buildId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">data</span>":
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+    "<span class="hljs-attribute">imageStream</span>": <span class="hljs-value"><span class="hljs-string">"server/name"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"docker-build"</span></span>,
+    "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-string">"openshift/dockerrepo"</span>
+  </span>}
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_build__buildId__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent"></span>/build/{buildId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Delete a build definition</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_build__buildId__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_build__buildId__delete_response" data-toggle="tab">Response</a>
+                                </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_build__buildId__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>buildId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_build__buildId__delete_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        
+
+                                        
+
+                                        
+                                            <h3>Body</h3>
+                                            
+                                                <p><strong>Type: application/json</strong></p>
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{
+  "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_build__buildId__post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent"></span>/build/{buildId}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Launch a build</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_build__buildId__post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_build__buildId__post_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>buildId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">data</span>": 
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">archiveUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://url/to/my/archive"</span>
   </span>}
 </span>}
 </pre>
@@ -4895,21 +5338,21 @@ versions of an image as it evolves over time with new builds of the codebase. </
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__builds_results">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__build__buildId__results">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
                     
                 </span>
-                <span class="parent">/builds</span>/results
+                <span class="parent">/build/{buildId}</span>/results
             </a>
         </h4>
     </div>
-    <div id="panel__builds_results" class="panel-collapse collapse">
+    <div id="panel__build__buildId__results" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_builds_results_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_build__buildId__results_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Retrieves list of build results</p>
@@ -4923,14 +5366,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_builds_results_get">
+        <div class="modal fade" tabindex="0" id="_build__buildId__results_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/builds</span>/results
+                            <span class="parent">/build/{buildId}</span>/results
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -4940,18 +5383,35 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_builds_results_get_request" data-toggle="tab">Request</a>
+                                <a href="#_build__buildId__results_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_builds_results_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_build__buildId__results_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_builds_results_get_request">
+                            <div class="tab-pane active" id="_build__buildId__results_get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>buildId</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
                                 
 
                                 
@@ -4962,7 +5422,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             </div>
 
                             
-                                <div class="tab-pane" id="_builds_results_get_response">
+                                <div class="tab-pane" id="_build__buildId__results_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -4981,20 +5441,23 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+      "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-15T03:58:40Z"</span></span>,
+      "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-15T03:59:40Z"</span></span>,
+      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"SUCCESS"</span></span>,
+      "<span class="hljs-attribute">logs</span>": <span class="hljs-value"><span class="hljs-string">"http://url/to/build/logs"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000002"</span></span>,
+      "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-15T04:58:40Z"</span></span>,
+      "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-15T04:59:40Z"</span></span>,
+      "<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"FAILURE"</span></span>,
+      "<span class="hljs-attribute">logs</span>": <span class="hljs-value"><span class="hljs-string">"http://url/to/build/logs"</span>
+    </span>}
+  ]
 </span>}
 </pre>
                                                         </small>
@@ -5053,6 +5516,9 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Lists all templates that your account has access to</p>
+<p>A template defines 0..n services and 0..m links. When it is applied
+to an existing project, those services and links are instantiated for
+that project.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -5084,6 +5550,9 @@ versions of an image as it evolves over time with new builds of the codebase. </
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info"><p>Lists all templates that your account has access to</p>
+<p>A template defines 0..n services and 0..m links. When it is applied
+to an existing project, those services and links are instantiated for
+that project.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -5130,20 +5599,57 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
-    ]
-  </span>}
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">services</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+          "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
+          "<span class="hljs-attribute">desiredState</span>": 
+          <span class="hljs-value">{
+            "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+            "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+            "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
+            "<span class="hljs-attribute">podTemplate</span>": 
+            <span class="hljs-value">{
+               "<span class="hljs-attribute">desiredState</span>":
+               <span class="hljs-value">{
+                 "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+                 "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+                   {
+                     "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+                     "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+                   </span>}
+                 ]</span>,
+                 "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+               </span>}</span>,
+               "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+                 "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+               </span>}
+            </span>}
+          </span>}
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">links</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+          "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+          "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+            "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+          </span>}
+          <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
+        </span>}
+      ]
+    </span>}
+  ]
 </span>}
 </pre>
                                                         </small>
@@ -5206,16 +5712,51 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
+    "<span class="hljs-attribute">services</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+        "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
+        "<span class="hljs-attribute">desiredState</span>": 
+        <span class="hljs-value">{
+          "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+          "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
+          "<span class="hljs-attribute">podTemplate</span>": 
+          <span class="hljs-value">{
+             "<span class="hljs-attribute">desiredState</span>":
+             <span class="hljs-value">{
+               "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+               "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+                 {
+                   "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+                   "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+                 </span>}
+               ]</span>,
+               "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+             </span>}</span>,
+             "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+               "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+             </span>}
+          </span>}
+        </span>}
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">links</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+        "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+        "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+          "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+        </span>}
+        <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
+      </span>}
     ]
   </span>}
 </span>}
@@ -5237,10 +5778,24 @@ versions of an image as it evolves over time with new builds of the codebase. </
 </div>
 
 
-    <div class="panel panel-white">
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_template__templateID_" class="panel-title">/template/{templateID}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__templates__templateID_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__template__templateID_">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -5250,15 +5805,15 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_delete">delete</span>
                     
                 </span>
-                <span class="parent">/templates</span>/{templateID}
+                <span class="parent"></span>/template/{templateID}
             </a>
         </h4>
     </div>
-    <div id="panel__templates__templateID_" class="panel-collapse collapse">
+    <div id="panel__template__templateID_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_templates__templateID__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_template__templateID__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Get a specific template</p>
@@ -5267,7 +5822,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_templates__templateID__put" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_template__templateID__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
                         <div class="method_description">
                             <p>Update a template</p>
@@ -5276,7 +5831,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_templates__templateID__delete" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_template__templateID__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
                         <div class="method_description">
                             <p>Delete a template</p>
@@ -5290,14 +5845,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_templates__templateID__get">
+        <div class="modal fade" tabindex="0" id="_template__templateID__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/templates</span>/{templateID}
+                            <span class="parent"></span>/template/{templateID}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -5307,14 +5862,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_templates__templateID__get_request" data-toggle="tab">Request</a>
+                                <a href="#_template__templateID__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_templates__templateID__get_request">
+                            <div class="tab-pane active" id="_template__templateID__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -5353,16 +5908,51 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
+    "<span class="hljs-attribute">services</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+        "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
+        "<span class="hljs-attribute">desiredState</span>": 
+        <span class="hljs-value">{
+          "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+          "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
+          "<span class="hljs-attribute">podTemplate</span>": 
+          <span class="hljs-value">{
+             "<span class="hljs-attribute">desiredState</span>":
+             <span class="hljs-value">{
+               "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+               "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+                 {
+                   "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+                   "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+                 </span>}
+               ]</span>,
+               "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+             </span>}</span>,
+             "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+               "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+             </span>}
+          </span>}
+        </span>}
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">links</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+        "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+        "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+          "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+        </span>}
+        <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
+      </span>}
     ]
   </span>}
 </span>}
@@ -5381,14 +5971,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_templates__templateID__put">
+        <div class="modal fade" tabindex="0" id="_template__templateID__put">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_put">put</span>
-                            <span class="parent">/templates</span>/{templateID}
+                            <span class="parent"></span>/template/{templateID}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -5398,14 +5988,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_templates__templateID__put_request" data-toggle="tab">Request</a>
+                                <a href="#_template__templateID__put_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_templates__templateID__put_request">
+                            <div class="tab-pane active" id="_template__templateID__put_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -5444,16 +6034,51 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
-    "<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"dev.rhcloud.com"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mydomain"</span></span>,
-    "<span class="hljs-attribute">members</span>": <span class="hljs-value">[
-       {
-         "<span class="hljs-attribute">login</span>": <span class="hljs-value"><span class="hljs-string">"adminuser"</span></span>,
-         "<span class="hljs-attribute">role</span>": <span class="hljs-value"><span class="hljs-string">"admin"</span></span>,
-         "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"user"</span></span>,
-         "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-       </span>}
+    "<span class="hljs-attribute">services</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
+        "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
+        "<span class="hljs-attribute">desiredState</span>": 
+        <span class="hljs-value">{
+          "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+          "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+          "<span class="hljs-attribute">replicaPolicy</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">atLeast</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">activeDeployment</span>": <span class="hljs-value"><span class="hljs-string">"a_deployment_id"</span></span>,
+          "<span class="hljs-attribute">podTemplate</span>": 
+          <span class="hljs-value">{
+             "<span class="hljs-attribute">desiredState</span>":
+             <span class="hljs-value">{
+               "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+               "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+                 {
+                   "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+                   "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+                 </span>}
+               ]</span>,
+               "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+             </span>}</span>,
+             "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+               "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+             </span>}
+          </span>}
+        </span>}
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">links</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
+        "<span class="hljs-attribute">projectId</span>": <span class="hljs-value"><span class="hljs-string">"myproject-1234123132"</span></span>,
+        "<span class="hljs-attribute">source</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"nginx-1893747912737"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">destination</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">serviceId</span>": <span class="hljs-value"><span class="hljs-string">"ruby1.9-1237471273"</span></span>,
+          "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span>
+        </span>}
+        <span class="hljs-string">"policy"</span>: <span class="hljs-string">"round-robin"</span>
+      </span>}
     ]
   </span>}
 </span>}
@@ -5472,14 +6097,14 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_templates__templateID__delete">
+        <div class="modal fade" tabindex="0" id="_template__templateID__delete">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_delete">delete</span>
-                            <span class="parent">/templates</span>/{templateID}
+                            <span class="parent"></span>/template/{templateID}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -5489,18 +6114,18 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_templates__templateID__delete_request" data-toggle="tab">Request</a>
+                                <a href="#_template__templateID__delete_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_templates__templateID__delete_response" data-toggle="tab">Response</a>
+                                    <a href="#_template__templateID__delete_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_templates__templateID__delete_request">
+                            <div class="tab-pane active" id="_template__templateID__delete_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -5528,7 +6153,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             </div>
 
                             
-                                <div class="tab-pane" id="_templates__templateID__delete_response">
+                                <div class="tab-pane" id="_template__templateID__delete_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -5568,8 +6193,6 @@ versions of an image as it evolves over time with new builds of the codebase. </
 
 
 
-
-
                             </div>
                         </div>
                     </div>
@@ -5587,6 +6210,10 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             <li><a href="#_image_streams">/image-streams</a></li>
                         
                             <li><a href="#_image_stream__streamID_">/image-stream/{streamID}</a></li>
+                        
+                            <li><a href="#_images">/images</a></li>
+                        
+                            <li><a href="#_image__imageID_">/image/{imageID}</a></li>
                         
                             <li><a href="#_services">/services</a></li>
                         
@@ -5606,7 +6233,11 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         
                             <li><a href="#_builds">/builds</a></li>
                         
+                            <li><a href="#_build__buildId_">/build/{buildId}</a></li>
+                        
                             <li><a href="#_templates">/templates</a></li>
+                        
+                            <li><a href="#_template__templateID_">/template/{templateID}</a></li>
                         
                     </ul>
                 </div>

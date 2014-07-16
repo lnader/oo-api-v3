@@ -1,16 +1,26 @@
 {
   "data":
   {
-    "id": "53c4249f076573c0f4000001",
-    "suffix": "dev.rhcloud.com",
-    "name": "mydomain",
-    "members": [
-       {
-         "login": "adminuser",
-         "role": "admin",
-         "type": "user",
-         "owner": true
-       }
-    ]
+    "name": "service-name",
+    "desiredState": 
+    {
+      "replicas": 3,
+      "replicaPolicy": {
+        "atLeast": 2
+      },
+      "podTemplate": 
+      {
+         "desiredState":
+         {
+           "image": "server/domain/name",
+           "network-ports": [
+             {
+               "hostPort": 8080,
+               "containerPort": 80
+             }
+           ]
+         }
+      }
+    }
   }
 }

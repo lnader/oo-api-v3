@@ -7,13 +7,14 @@ mediaType: application/json
 documentation:
  - title: Overview
    content: !include doc/overview.md
- - title: Projects
-   content: !include doc/projects.md
- - title: Image Streams and Images
-   content: !include doc/image-streams.md
 /projects:
   get:
-    description: List all projects for your account
+    description: |
+      List all projects for your account.
+
+      Projects are a similar concept to v2 domains. A project is a grouping of services 
+      with shared access control and resource limits. Applications can be assembled 
+      from services in a project by linking them together via service endpoints.
     responses:
       200:
         body:
@@ -43,6 +44,10 @@ documentation:
               {
                 "success": true
               }
+    post:
+      description: Instantiate a template in the given project
+      body:
+        example: !include examples/project-post.json
 /image-streams:
   get:
     queryParameters:
@@ -52,7 +57,13 @@ documentation:
       visibility:
         description: Filter by visibility (public, private)
         type: string
-    description: Lists all image streams that you have access to
+    description: |
+      Lists all image streams that you have access to.
+      
+      An image stream is a collection of images that share the same metadata. It contains 
+      multiple versions of an image as it evolves over time with new builds of the codebase. 
+      An image stream may be associated with a build which can be triggered by an event such
+      as a commit to a source repository. The build will then push a new image on to the stream.
     responses:
       200:
         body:
@@ -79,37 +90,48 @@ documentation:
               {
                 "success": true
               }
-    /images:
-      get:
-        description: Lists images in the image stream
-        responses:
-          200:
-            body:
-              example: !include examples/images.json
-      post:
-        description: Create a new image in the stream
+/images:
+  get:
+    queryParameters:
+      streamId:
+        description: Filter list by stream
+        type: string
+    description: |
+      Lists images visible to you
+
+      Images can be stored in Openshift servers or can be references to images from
+      an external repository. The metadata that Openshift stores for an image will augment
+      the metadata that has already been specified in the image through its Dockerfile.
+    responses:
+      200:
         body:
-          example: !include examples/create-image.json
-      /{imageID}:
-        get:
-          description: Get docker image metadata
-          body:
-            example: !include examples/image.json
-        delete:
-          description: Delete an image
-          responses:
-            200:
-              body:
-                example: |
-                  {
-                    "success": true
-                  }
+          example: !include examples/images.json
+  post:
+    description: Create a new image definition
+    body:
+      example: !include examples/create-image.json
+/image/{imageID}:
+    get:
+      description: Get image definition
+      body:
+        example: !include examples/image.json
+
 /services:
   get:
-    description: Lists all services that your account has access to
+    description: |
+      Lists all services that your account has access to
+      
+      Services can be public or owned by a project. They contain a template of a pod and
+      reference image streams that supply the images for those templates. A service may 
+      be configured to react to an image being pushed to an image stream by initiating a 
+      deployment. Deployments are associated with a service and make use of 
+      Kubernetes replication controllers to manage pods in a cluster.
+      For deployments, a service contains a policy that constrains how deployments can occur.
+      For example, it may require that there exist at least 2 operational pods at all times.
+      A deployment needs to operate under those constraints when making changes.
     queryParameters:
-      domainId:
-        description: filter the services owned by a particular domain
+      projectId:
+        description: filter the services owned by a particular project
     responses:
       200:
         body:
@@ -146,16 +168,16 @@ documentation:
       post:
         description: Create/update environment variables
         body:
-          example: !include examples/create-envvar.json
+          example: !include examples/envvars.json
       /{variableName}:
         get:
           description: Get environment variable
           body:
-            example: !include examples/link.json
+            example: !include examples/envvar.json
         put:
           description: Update an environment variable's value
           body:
-            example: !include examples/update-link.json
+            example: !include examples/envvar.json
         delete:
           description: Delete an environment variable
           responses:
@@ -167,7 +189,14 @@ documentation:
                   }
 /deployments:
   get:
-    description: Lists deployments of the given service
+    description: |
+      Lists active deployments in the current project
+
+      Deployments effect change in a service such as scaling up, down, updating the 
+      current image, etc. Deployments may use different policies for carrying out
+      the change. For example, a rolling update with a single pod change at a time, or
+      a batch update, etc. Deployments make use of Kubernetes replicationControllers
+      to bring about the changes.
     responses:
       200:
         body:
@@ -183,7 +212,17 @@ documentation:
       example: !include examples/deployment.json
 /links:
   get:
-    description: Links associated with this service
+    description: |
+      List of links between services in your account
+
+      Unlike a Docker link, a Link in OpenShift defines a relationship between services
+      which may be composed by multiple Docker images. A link may include additional metadata
+      about the relationship such as the algorithm to use to distribute requests.
+    queryParameters:
+      projectId:
+        description: filter the links owned by a particular project
+      serviceId:
+        description: filter the links attached to a particular service
     responses:
       200:
         body:
@@ -191,7 +230,7 @@ documentation:
   post:
     description: Create a new link between this service and a different service
     body:
-      example: !include examples/create-link.json
+      example: !include examples/link.json
 /link/{linkID}:
   get:
     description: Get link details
@@ -200,7 +239,7 @@ documentation:
   put:
     description: Update a link
     body:
-      example: !include examples/update-link.json
+      example: !include examples/link.json
   delete:
     description: Delete a link
     responses:
@@ -212,7 +251,14 @@ documentation:
             }
 /aliases:
   get:
-    description: List all aliases associated with this service
+    description: |
+      List all aliases visible to you
+
+      Aliases in v3 perform the same function as aliases in v2. The main difference
+      is that in v3 an alias is associated with a service, not an application.
+    queryParameters:
+      serviceId:
+        description: filter aliases by associated service
     responses:
       200:
         body:
@@ -220,7 +266,7 @@ documentation:
   post:
     description: Create an alias for this service
     body:
-      example: !include examples/create-alias.json
+      example: !include examples/alias.json
 /alias/{aliasID}:
   get:
     description: Get alias
@@ -229,7 +275,7 @@ documentation:
   put:
     description: Update an alias
     body:
-      example: !include examples/update-alias.json
+      example: !include examples/alias.json
   delete:
     description: Delete an alias
     responses:
@@ -241,15 +287,45 @@ documentation:
             }
 /builds:
   get:
-    description: Retrieves a list of build objects scoped to your domain/project
+    description: |
+      Retrieves a list of builds visible to you
+
+      A build is associated with an image stream and can be triggered by a webhook
+      on Github. It can either be a Docker build or a source build based on a 
+      specified image. When a build completes, it posts a new image to the image
+      stream that it's associated with.
+    responses:
+      200:
+        body:
+          example: !include examples/builds.json
+  post:
+    description: Create a new build
+    body:
+      example: !include examples/build.json
+/build/{buildId}:
+  get:
+    description: Retrieve a single build definition
     responses:
       200:
         body:
           example: !include examples/build.json
-  post:
-    description: Start a new build
+  put:
+    description: Update a build definition
     body:
-      example: !include examples/create-build.json
+      example: !include examples/build.json
+  delete:
+    description: Delete a build definition
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+  post:
+    description: Launch a build
+    body:
+      example: !include examples/launch-build.json
   /results:
     get:
       description: Retrieves list of build results
@@ -260,7 +336,12 @@ documentation:
 
 /templates:
   get:
-    description: Lists all templates that your account has access to
+    description: |
+      Lists all templates that your account has access to
+
+      A template defines 0..n services and 0..m links. When it is applied
+      to an existing project, those services and links are instantiated for
+      that project.
     responses:
       200:
         body:
@@ -268,22 +349,22 @@ documentation:
   post:
     description: Create a new template
     body:
-      example: !include examples/create-template.json
-  /{templateID}:
-    get:
-      description: Get a specific template
-      body:
-        example: !include examples/template.json
-    put:
-      description: Update a template
-      body:
-        example: !include examples/template.json
-    delete:
-      description: Delete a template
-      responses:
-        200:
-          body:
-            example: |
-              {
-                "success": true
-              }
+      example: !include examples/template.json
+/template/{templateID}:
+  get:
+    description: Get a specific template
+    body:
+      example: !include examples/template.json
+  put:
+    description: Update a template
+    body:
+      example: !include examples/template.json
+  delete:
+    description: Delete a template
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }

@@ -1,19 +1,17 @@
 {
   "data":
   {
-    "id":"nginx-10273491827349324",
     "url":"https://registry.hub.docker.com/u/library/nginx",
     "environment":
     {
-      "VAR3": "value3",
-      "VAR4": "value4"
+      "name1": "value1",
+      "name2": "value2"
     },
-    "ports": {
-      "web": 8080
-    },
-    "commands": [
-      "command-1",
-      "command-2"
+    "networkPorts": [
+      {
+        "hostPort": 8080,
+        "containerPort": 80
+      }
     ]
   }
 }

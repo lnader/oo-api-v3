@@ -3,7 +3,7 @@
   {
     "id": "53c4249f076573c0f4000001",
     "suffix": "dev.rhcloud.com",
-    "name": "mydomain",
+    "name": "myproject",
     "members": [
        {
          "login": "adminuser",

@@ -2,33 +2,19 @@
   "data":
   {
     "visibility": "public",
-    "domain": "a-domain-id",
-    "name": "nginx",
-    "shared-with": [
-       "user2@someplace.com",
-       "user4@example.com"
-    ],
+    "domain": "domain",
+    "name": "server/domain/nginx",
     "environment": 
     {
-      "VAR1": "value1",
-      "VAR2": "value2"
+      "name1": "value1",
+      "name2": "value2"
     },
-    "active-image": 
-    {
-      "id":"nginx-10273491827349324",
-      "max-instances": 0
-      "environment":
+    "networkPorts": [
       {
-        "VAR3": "value3",
-        "VAR4": "value4"
-      },
-      "ports": {
-        "web": 8080
-      },
-      "commands": [
-        "command-1",
-        "command-2"
-      ]
-    }
+        "hostPort": 8080,
+        "containerPort": 80
+      }
+    ],
+    "latest-image":"nginx-10273491827349324"
   }
 }
