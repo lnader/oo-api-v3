@@ -1,4 +1,5 @@
 #%RAML 0.8
+# vim: set ft=yaml:
 baseUri: http://server/broker/rest
 title: OpenShiftV3
 version: alpha1
@@ -6,35 +7,35 @@ mediaType: application/json
 documentation:
  - title: Overview
    content: !include doc/overview.md
- - title: Domains
-   content: !include doc/domains.md
+ - title: Projects
+   content: !include doc/projects.md
  - title: Image Streams and Images
    content: !include doc/image-streams.md
-/domains:
+/projects:
   get:
-    description: List all domains for your account
+    description: List all projects for your account
     responses:
       200:
         body:
-          example: !include examples/domain-list.json
+          example: !include examples/project-list.json
   post:
-    description: Create a new domain
+    description: Create a new project
     body:
-      example: !include examples/domain.json
+      example: !include examples/project.json
 
-/domain/{domainID}:
+/project/{projectID}:
     get:
-      description: Get a specific domain
+      description: Get a specific project
       responses:
         200:
           body:
-            example: !include examples/domain.json
+            example: !include examples/project.json
     put:
-      description: Update a domain
+      description: Update a project
       body:
-        example: !include examples/domain-put.json
+        example: !include examples/project-put.json
     delete:
-      description: Delete a specific domain
+      description: Delete a project
       responses:
         200:
           body:

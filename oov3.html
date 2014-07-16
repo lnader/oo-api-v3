@@ -132,10 +132,10 @@ The existing API will continue to be supported through 3.x,
 with concepts mapped as closely as possible to the new model.</p>
 
                     
-                        <h3 id="Domains"><a href="#Domains">Domains</a></h3>
-                        <p>Domains remain similar in concept to v2 domains. A domain is a grouping of services with shared
-access control and resource limits. However, unlike v2, applications are more loosely defined 
-as a set of services that are linked together.</p>
+                        <h3 id="Projects"><a href="#Projects">Projects</a></h3>
+                        <p>Projects are a similar concept to v2 domains. A project is a grouping of services with shared
+access control and resource limits. Applications can be assembled from services in a project
+by linking them together via service endpoints.</p>
 
                     
                         <h3 id="Image-Streams-and-Images"><a href="#Image-Streams-and-Images">Image Streams and Images</a></h3>
@@ -155,7 +155,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_domains" class="panel-title">/domains</h3>
+                            <h3 id="_projects" class="panel-title">/projects</h3>
                         </div>
 
                         <div class="panel-body">
@@ -165,7 +165,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__domains">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__projects">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -173,27 +173,27 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_post">post</span>
                     
                 </span>
-                <span class="parent"></span>/domains
+                <span class="parent"></span>/projects
             </a>
         </h4>
     </div>
-    <div id="panel__domains" class="panel-collapse collapse">
+    <div id="panel__projects" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_domains_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_projects_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>List all domains for your account</p>
+                            <p>List all projects for your account</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_domains_post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_projects_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Create a new domain</p>
+                            <p>Create a new project</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -204,35 +204,35 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_domains_get">
+        <div class="modal fade" tabindex="0" id="_projects_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/domains
+                            <span class="parent"></span>/projects
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>List all domains for your account</p>
+                        <div class="alert alert-info"><p>List all projects for your account</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_domains_get_request" data-toggle="tab">Request</a>
+                                <a href="#_projects_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_domains_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_projects_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_domains_get_request">
+                            <div class="tab-pane active" id="_projects_get_request">
                                 
 
                                 
@@ -243,7 +243,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             </div>
 
                             
-                                <div class="tab-pane" id="_domains_get_response">
+                                <div class="tab-pane" id="_projects_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -307,31 +307,31 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_domains_post">
+        <div class="modal fade" tabindex="0" id="_projects_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/domains
+                            <span class="parent"></span>/projects
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Create a new domain</p>
+                        <div class="alert alert-info"><p>Create a new project</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_domains_post_request" data-toggle="tab">Request</a>
+                                <a href="#_projects_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_domains_post_request">
+                            <div class="tab-pane active" id="_projects_post_request">
                                 
 
                                 
@@ -391,7 +391,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_domain__domainID_" class="panel-title">/domain/{domainID}</h3>
+                            <h3 id="_project__projectID_" class="panel-title">/project/{projectID}</h3>
                         </div>
 
                         <div class="panel-body">
@@ -401,7 +401,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__domain__domainID_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__project__projectID_">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -411,36 +411,36 @@ versions of an image as it evolves over time with new builds of the codebase. </
                         <span class="badge badge_delete">delete</span>
                     
                 </span>
-                <span class="parent"></span>/domain/{domainID}
+                <span class="parent"></span>/project/{projectID}
             </a>
         </h4>
     </div>
-    <div id="panel__domain__domainID_" class="panel-collapse collapse">
+    <div id="panel__project__projectID_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_domain__domainID__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_project__projectID__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Get a specific domain</p>
+                            <p>Get a specific project</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_domain__domainID__put" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_project__projectID__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
                         <div class="method_description">
-                            <p>Update a domain</p>
+                            <p>Update a project</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_domain__domainID__delete" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_project__projectID__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
                         <div class="method_description">
-                            <p>Delete a specific domain</p>
+                            <p>Delete a project</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -451,41 +451,41 @@ versions of an image as it evolves over time with new builds of the codebase. </
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_domain__domainID__get">
+        <div class="modal fade" tabindex="0" id="_project__projectID__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/domain/{domainID}
+                            <span class="parent"></span>/project/{projectID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Get a specific domain</p>
+                        <div class="alert alert-info"><p>Get a specific project</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_domain__domainID__get_request" data-toggle="tab">Request</a>
+                                <a href="#_project__projectID__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_domain__domainID__get_response" data-toggle="tab">Response</a>
+                                    <a href="#_project__projectID__get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_domain__domainID__get_request">
+                            <div class="tab-pane active" id="_project__projectID__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>domainID</strong>:
+                                                <strong>projectID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -507,7 +507,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             </div>
 
                             
-                                <div class="tab-pane" id="_domain__domainID__get_response">
+                                <div class="tab-pane" id="_project__projectID__get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -556,37 +556,37 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_domain__domainID__put">
+        <div class="modal fade" tabindex="0" id="_project__projectID__put">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_put">put</span>
-                            <span class="parent"></span>/domain/{domainID}
+                            <span class="parent"></span>/project/{projectID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Update a domain</p>
+                        <div class="alert alert-info"><p>Update a project</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_domain__domainID__put_request" data-toggle="tab">Request</a>
+                                <a href="#_project__projectID__put_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_domain__domainID__put_request">
+                            <div class="tab-pane active" id="_project__projectID__put_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>domainID</strong>:
+                                                <strong>projectID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -638,41 +638,41 @@ versions of an image as it evolves over time with new builds of the codebase. </
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_domain__domainID__delete">
+        <div class="modal fade" tabindex="0" id="_project__projectID__delete">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_delete">delete</span>
-                            <span class="parent"></span>/domain/{domainID}
+                            <span class="parent"></span>/project/{projectID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Delete a specific domain</p>
+                        <div class="alert alert-info"><p>Delete a project</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_domain__domainID__delete_request" data-toggle="tab">Request</a>
+                                <a href="#_project__projectID__delete_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_domain__domainID__delete_response" data-toggle="tab">Response</a>
+                                    <a href="#_project__projectID__delete_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_domain__domainID__delete_request">
+                            <div class="tab-pane active" id="_project__projectID__delete_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>domainID</strong>:
+                                                <strong>projectID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -694,7 +694,7 @@ versions of an image as it evolves over time with new builds of the codebase. </
                             </div>
 
                             
-                                <div class="tab-pane" id="_domain__domainID__delete_response">
+                                <div class="tab-pane" id="_project__projectID__delete_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -1007,8 +1007,8 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-string">"adomain-id"</span></span>,
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
     "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
        <span class="hljs-string">"user2@someplace.com"</span>,
@@ -1186,8 +1186,8 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-string">"adomain-id"</span></span>,
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
     "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
        <span class="hljs-string">"user2@someplace.com"</span>,
@@ -1295,8 +1295,8 @@ versions of an image as it evolves over time with new builds of the codebase. </
                                                     <pre>{
   "<span class="hljs-attribute">data</span>":
   <span class="hljs-value">{
-    "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-string">"adomain-id"</span></span>,
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"a-domain-id"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nginx"</span></span>,
     "<span class="hljs-attribute">shared-with</span>": <span class="hljs-value">[
        <span class="hljs-string">"user2@someplace.com"</span>,
@@ -2331,23 +2331,31 @@ versions of an image as it evolves over time with new builds of the codebase. </
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
-    "<span class="hljs-attribute">podTemplate</span>": <span class="hljs-value">{
-       "<span class="hljs-attribute">images</span>":
-       <span class="hljs-value">[
-         <span class="hljs-string">"image-stream"</span>: <span class="hljs-string">"image-stream-id"</span>,
-
-         <span class="hljs-string">"network-ports"</span>: [
-           {
-             "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-             "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-           </span>}
-         <span class="hljs-string">"type"</span>: <span class="hljs-string">"user"</span>,
-         <span class="hljs-string">"owner"</span>: <span class="hljs-literal">true</span>
-       ]
-    }
-  }
-}
-</span></span></span></pre>
+    "<span class="hljs-attribute">desiredState</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+      "<span class="hljs-attribute">podTemplate</span>": 
+      <span class="hljs-value">{
+         "<span class="hljs-attribute">desiredState</span>":
+         <span class="hljs-value">{
+           "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+           "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+             {
+               "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+               "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+             </span>}
+           ]</span>,
+           "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+         </span>}</span>,
+         "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+           "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+         </span>}
+      </span>}
+    </span>}
+  </span>}
+</span>}
+</pre>
                                                 </small>
                                             </p>
                                         
@@ -2428,23 +2436,31 @@ versions of an image as it evolves over time with new builds of the codebase. </
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"53c4249f076573c0f4000001"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain-id"</span></span>,
-    "<span class="hljs-attribute">podTemplate</span>": <span class="hljs-value">{
-       "<span class="hljs-attribute">images</span>":
-       <span class="hljs-value">[
-         <span class="hljs-string">"image-stream"</span>: <span class="hljs-string">"image-stream-id"</span>,
-
-         <span class="hljs-string">"network-ports"</span>: [
-           {
-             "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-             "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-           </span>}
-         <span class="hljs-string">"type"</span>: <span class="hljs-string">"user"</span>,
-         <span class="hljs-string">"owner"</span>: <span class="hljs-literal">true</span>
-       ]
-    }
-  }
-}
-</span></span></span></pre>
+    "<span class="hljs-attribute">desiredState</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">replicas</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+      "<span class="hljs-attribute">replicaSelector</span>": <span class="hljs-value">{ "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span> </span>}</span>,
+      "<span class="hljs-attribute">podTemplate</span>": 
+      <span class="hljs-value">{
+         "<span class="hljs-attribute">desiredState</span>":
+         <span class="hljs-value">{
+           "<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/name"</span></span>,
+           "<span class="hljs-attribute">network-ports</span>": <span class="hljs-value">[
+             {
+               "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+               "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+             </span>}
+           ]</span>,
+           "<span class="hljs-attribute">owner</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+         </span>}</span>,
+         "<span class="hljs-attribute">labels</span>": <span class="hljs-value">{
+           "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"service-name"</span>
+         </span>}
+      </span>}
+    </span>}
+  </span>}
+</span>}
+</pre>
                                                 </small>
                                             </p>
                                         
@@ -5564,9 +5580,9 @@ versions of an image as it evolves over time with new builds of the codebase. </
                 <div id="sidebar" class="hidden-print affix" role="complementary">
                     <ul class="nav nav-pills nav-stacked">
                         
-                            <li><a href="#_domains">/domains</a></li>
+                            <li><a href="#_projects">/projects</a></li>
                         
-                            <li><a href="#_domain__domainID_">/domain/{domainID}</a></li>
+                            <li><a href="#_project__projectID_">/project/{projectID}</a></li>
                         
                             <li><a href="#_image_streams">/image-streams</a></li>
                         
