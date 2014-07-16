@@ -22,7 +22,7 @@ documentation:
     body:
       example: !include examples/domain.json
 
-  /{domainID}:
+/domain/{domainID}:
     get:
       description: Get a specific domain
       responses:
@@ -60,7 +60,7 @@ documentation:
     description: Create a new image stream
     body:
       example: !include examples/image-stream.json
-  /{streamID}:
+/image-stream/{streamID}:
     get:
       description: Get information about an image stream
       body:
@@ -117,7 +117,7 @@ documentation:
     description: Create a new service
     body:
       example: !include examples/create-service.json
-  /{serviceID}:
+/service/{serviceID}:
     get:
       description: Get a specific service definition
       body:
@@ -135,70 +135,6 @@ documentation:
               {
                 "success": true
               }
-    /build:
-      get:
-        description: Retrieves the build object for a specific service
-        responses:
-          200:
-            body:
-              example: !include examples/build.json
-      post:
-        description: Start a new build
-        body:
-          example: !include examples/create-build.json
-      /results:
-        get:
-          description: Retrieves list of build results
-          responses:
-            200:
-              body:
-                example: !include examples/build-results.json
-
-    /deployments:
-      get:
-        description: Lists deployments of the given service
-        responses:
-          200:
-            body:
-              example: !include examples/deployments.json
-      post:
-        description: Create a new image in the stream
-        body:
-          example: !include examples/create-deployment.json
-      /{deploymentID}:
-        get:
-          description: Get deployment details
-          body:
-            example: !include examples/deployment.json
-    /links:
-      get:
-        description: Links associated with this service
-        responses:
-          200:
-            body:
-              example: !include examples/links.json
-      post:
-        description: Create a new link between this service and a different service
-        body:
-          example: !include examples/create-link.json
-      /{linkID}:
-        get:
-          description: Get link details
-          body:
-            example: !include examples/link.json
-        put:
-          description: Update a link
-          body:
-            example: !include examples/update-link.json
-        delete:
-          description: Delete a link
-          responses:
-            200:
-              body:
-                example: |
-                  {
-                    "success": true
-                  }
     /environment-variables:
       get:
         description: Environment variables associated with this service
@@ -228,35 +164,99 @@ documentation:
                   {
                     "success": true
                   }
-    /aliases:
-      get:
-        description: List all aliases associated with this service
-        responses:
-          200:
-            body:
-              example: !include examples/aliases.json
-      post:
-        description: Create an alias for this service
+/deployments:
+  get:
+    description: Lists deployments of the given service
+    responses:
+      200:
         body:
-          example: !include examples/create-alias.json
-      /{aliasID}:
-        get:
-          description: Get alias
+          example: !include examples/deployments.json
+  post:
+    description: Create a new image in the stream
+    body:
+      example: !include examples/create-deployment.json
+/deployment/{deploymentID}:
+  get:
+    description: Get deployment details
+    body:
+      example: !include examples/deployment.json
+/links:
+  get:
+    description: Links associated with this service
+    responses:
+      200:
+        body:
+          example: !include examples/links.json
+  post:
+    description: Create a new link between this service and a different service
+    body:
+      example: !include examples/create-link.json
+/link/{linkID}:
+  get:
+    description: Get link details
+    body:
+      example: !include examples/link.json
+  put:
+    description: Update a link
+    body:
+      example: !include examples/update-link.json
+  delete:
+    description: Delete a link
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+/aliases:
+  get:
+    description: List all aliases associated with this service
+    responses:
+      200:
+        body:
+          example: !include examples/aliases.json
+  post:
+    description: Create an alias for this service
+    body:
+      example: !include examples/create-alias.json
+/alias/{aliasID}:
+  get:
+    description: Get alias
+    body:
+      example: !include examples/alias.json
+  put:
+    description: Update an alias
+    body:
+      example: !include examples/update-alias.json
+  delete:
+    description: Delete an alias
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+/builds:
+  get:
+    description: Retrieves a list of build objects scoped to your domain/project
+    responses:
+      200:
+        body:
+          example: !include examples/build.json
+  post:
+    description: Start a new build
+    body:
+      example: !include examples/create-build.json
+  /results:
+    get:
+      description: Retrieves list of build results
+      responses:
+        200:
           body:
-            example: !include examples/alias.json
-        put:
-          description: Update an alias
-          body:
-            example: !include examples/update-alias.json
-        delete:
-          description: Delete an alias
-          responses:
-            200:
-              body:
-                example: |
-                  {
-                    "success": true
-                  }
+            example: !include examples/build-results.json
+
 /templates:
   get:
     description: Lists all templates that your account has access to

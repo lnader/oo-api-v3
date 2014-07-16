@@ -2,15 +2,21 @@
   "data":
   {
     "id": "53c4249f076573c0f4000001",
-    "suffix": "dev.rhcloud.com",
-    "name": "mydomain",
-    "members": [
-       {
-         "login": "adminuser",
-         "role": "admin",
+    "name": "service-name",
+    "domain": "domain-id",
+    "podTemplate": {
+       "images":
+       [
+         "image-stream": "image-stream-id",
+
+         "network-ports": [
+           {
+             "hostPort": 8080,
+             "containerPort": 80
+           }
          "type": "user",
          "owner": true
-       }
-    ]
+       ]
+    }
   }
 }
