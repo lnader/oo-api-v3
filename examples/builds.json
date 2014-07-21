@@ -6,6 +6,7 @@
       "imageStream": "server/name",
       "type": "source-build",
       "repository": "openshift/myapp"
+      "builderImageStream": "myserver/builderimage"
     }
   ]
 }

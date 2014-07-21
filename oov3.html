@@ -817,6 +817,636 @@ from services in a project by linking them together via service endpoints.</p>
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
+                            <h3 id="_builder_image_streams" class="panel-title">/builder-image-streams</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__builder_image_streams">
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_post">post</span>
+                    
+                </span>
+                <span class="parent"></span>/builder-image-streams
+            </a>
+        </h4>
+    </div>
+    <div id="panel__builder_image_streams" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_builder_image_streams_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        <div class="method_description">
+                            <p>Lists all builder image streams that you have access to.</p>
+<p>An image stream is a collection of images that share the same metadata. It contains 
+multiple versions of an image as it evolves over time with new builds of the codebase. 
+An image stream may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the stream.</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_builder_image_streams_post" class="list-group-item">
+                        <span class="badge badge_post">post</span>
+                        <div class="method_description">
+                            <p>Create a new image stream</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" tabindex="0" id="_builder_image_streams_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/builder-image-streams
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Lists all builder image streams that you have access to.</p>
+<p>An image stream is a collection of images that share the same metadata. It contains 
+multiple versions of an image as it evolves over time with new builds of the codebase. 
+An image stream may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the stream.</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_builder_image_streams_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_builder_image_streams_get_response" data-toggle="tab">Response</a>
+                                </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_builder_image_streams_get_request">
+                                
+
+                                
+
+                                
+                                    <h3>Query Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>domainId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>Filter list by domain</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>visibility</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>Filter by visibility (public, private)</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_builder_image_streams_get_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        
+
+                                        
+
+                                        
+                                            <h3>Body</h3>
+                                            
+                                                <p><strong>Type: application/json</strong></p>
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{
+  "<span class="hljs-attribute">list</span>":
+  <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
+      "<span class="hljs-attribute">environment</span>": 
+      <span class="hljs-value">{
+        "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+        "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+          "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+        </span>}
+      ]</span>,
+      "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+    </span>}
+  ]
+</span>}
+</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_builder_image_streams_post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_post">post</span>
+                            <span class="parent"></span>/builder-image-streams
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Create a new image stream</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_builder_image_streams_post_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_builder_image_streams_post_request">
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">data</span>":
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
+    "<span class="hljs-attribute">environment</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+  </span>}
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_builder_image_stream__streamID_" class="panel-title">/builder-image-stream/{streamID}</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__builder_image_stream__streamID_">
+                <span class="methods">
+                    
+                        <span class="badge badge_get">get</span>
+                    
+                        <span class="badge badge_put">put</span>
+                    
+                        <span class="badge badge_delete">delete</span>
+                    
+                </span>
+                <span class="parent"></span>/builder-image-stream/{streamID}
+            </a>
+        </h4>
+    </div>
+    <div id="panel__builder_image_stream__streamID_" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        <div class="method_description">
+                            <p>Get information about an image stream</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__put" class="list-group-item">
+                        <span class="badge badge_put">put</span>
+                        <div class="method_description">
+                            <p>Update an image stream</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__delete" class="list-group-item">
+                        <span class="badge badge_delete">delete</span>
+                        <div class="method_description">
+                            <p>Delete an image stream</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/builder-image-stream/{streamID}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Get information about an image stream</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_builder_image_stream__streamID__get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_builder_image_stream__streamID__get_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>streamID</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">data</span>":
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
+    "<span class="hljs-attribute">environment</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+  </span>}
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__put">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_put">put</span>
+                            <span class="parent"></span>/builder-image-stream/{streamID}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Update an image stream</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_builder_image_stream__streamID__put_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_builder_image_stream__streamID__put_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>streamID</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                                    <h3>Body</h3>
+                                    
+                                        <p><strong>Type: application/json</strong></p>
+                                        
+
+                                        
+
+                                        
+                                            <p>
+                                                <small>
+                                                    <strong>Example</strong>:
+                                                    <pre>{
+  "<span class="hljs-attribute">data</span>":
+  <span class="hljs-value">{
+    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
+    "<span class="hljs-attribute">environment</span>": 
+    <span class="hljs-value">{
+      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
+      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
+        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+  </span>}
+</span>}
+</pre>
+                                                </small>
+                                            </p>
+                                        
+                                    
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__delete">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_delete">delete</span>
+                            <span class="parent"></span>/builder-image-stream/{streamID}
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Delete an image stream</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_builder_image_stream__streamID__delete_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_builder_image_stream__streamID__delete_response" data-toggle="tab">Response</a>
+                                </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_builder_image_stream__streamID__delete_request">
+                                
+                                    <h3>URI Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>streamID</strong>:
+                                                <em>
+                                                    
+                                                        required
+                                                    
+                                                    (string)
+                                                </em>
+
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_builder_image_stream__streamID__delete_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        
+
+                                        
+
+                                        
+                                            <h3>Body</h3>
+                                            
+                                                <p><strong>Type: application/json</strong></p>
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>{
+  "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
                             <h3 id="_image_streams" class="panel-title">/image-streams</h3>
                         </div>
 
@@ -912,7 +1542,7 @@ as a commit to a source repository. The build will then push a new image on to t
                                     <ul>
                                         
                                             <li>
-                                                <strong>domainId</strong>
+                                                <strong>projectId</strong>
                                                 <em>
                                                     
                                                     
@@ -920,7 +1550,7 @@ as a commit to a source repository. The build will then push a new image on to t
                                                     
                                                 </em>
 
-                                                <p>Filter list by domain</p>
+                                                <p>Filter list by project</p>
 
 
                                                 
@@ -4810,6 +5440,7 @@ stream that it&#39;s associated with.</p>
       "<span class="hljs-attribute">imageStream</span>": <span class="hljs-value"><span class="hljs-string">"server/name"</span></span>,
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"source-build"</span></span>,
       "<span class="hljs-attribute">repository</span>": <span class="hljs-value"><span class="hljs-string">"openshift/myapp"</span>
+      <span class="hljs-string">"builderImageStream"</span>: <span class="hljs-string">"myserver/builderimage"</span>
     </span>}
   ]
 </span>}
@@ -8447,6 +9078,10 @@ that project.</p>
                             <li><a href="#_projects">/projects</a></li>
                         
                             <li><a href="#_project__projectID_">/project/{projectID}</a></li>
+                        
+                            <li><a href="#_builder_image_streams">/builder-image-streams</a></li>
+                        
+                            <li><a href="#_builder_image_stream__streamID_">/builder-image-stream/{streamID}</a></li>
                         
                             <li><a href="#_image_streams">/image-streams</a></li>
                         

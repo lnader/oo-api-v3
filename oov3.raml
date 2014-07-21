@@ -48,11 +48,53 @@ documentation:
       description: Instantiate a template in the given project
       body:
         example: !include examples/project-post.json
-/image-streams:
+/builder-image-streams:
   get:
     queryParameters:
       domainId:
         description: Filter list by domain
+        type: string
+      visibility:
+        description: Filter by visibility (public, private)
+        type: string
+    description: |
+      Lists all builder image streams that you have access to.
+      
+      An image stream is a collection of images that share the same metadata. It contains 
+      multiple versions of an image as it evolves over time with new builds of the codebase. 
+      An image stream may be associated with a build which can be triggered by an event such
+      as a commit to a source repository. The build will then push a new image on to the stream.
+    responses:
+      200:
+        body:
+          example: !include examples/image-streams.json
+  post:
+    description: Create a new image stream
+    body:
+      example: !include examples/image-stream.json
+/builder-image-stream/{streamID}:
+    get:
+      description: Get information about an image stream
+      body:
+        example: !include examples/image-stream.json
+    put:
+      description: Update an image stream
+      body:
+        example: !include examples/image-stream.json
+    delete:
+      description: Delete an image stream
+      responses:
+        200:
+          body:
+            example: |
+              {
+                "success": true
+              }
+/image-streams:
+  get:
+    queryParameters:
+      projectId:
+        description: Filter list by project
         type: string
       visibility:
         description: Filter by visibility (public, private)
