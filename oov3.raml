@@ -368,3 +368,108 @@ documentation:
             {
               "success": true
             }
+/pods:
+  get:
+    description: List all pods on this cluster
+    responses:
+      200:
+        body:
+          example: !include examples/pod-list.json
+  post:
+    description: Create a new pod. currentState is ignored if present.
+    body:
+      schema: !include doc/pod-schema.json
+      example: !include examples/pod.json
+  
+  /{podId}:
+    get:
+      description: Get a specific pod
+      responses:
+        200:
+          body:
+            example: !include examples/pod.json
+    put:
+      description: Update a pod
+      body:
+        schema: !include doc/pod-schema.json
+        example: !include examples/pod.json
+    delete:
+      description: Delete a specific pod
+      responses:
+        200:
+          body:
+            example: |
+              { 
+                "success": true
+              }
+
+/replicationControllers:
+  get:
+    description: List all replicationControllers on this cluster
+    responses:
+      200:
+        body:
+          example: !include examples/controller-list.json
+  post:
+    description: Create a new controller. currentState is ignored if present.
+    body:
+      schema: !include doc/controller-schema.json
+      example: !include examples/controller.json
+  
+  /{controllerId}:
+    get:
+      description: Get a specific controller
+      responses:
+        200:
+          body:
+            example: !include examples/controller.json
+    put:
+      description: Update a controller
+      body:
+        schema: !include doc/controller-schema.json
+        example: !include examples/controller.json
+    delete:
+      description: Delete a specific controller
+      responses:
+        200:
+          body:
+            example: |
+              { 
+                "success": true
+              }
+
+/lbservices:
+  get:
+    description: List all services on this cluster
+    responses:
+      200:
+        body:
+          example: !include examples/service-list.json
+  post:
+    description: Create a new service
+    body:
+      schema: !include doc/service-schema.json
+      example: !include examples/lbservice.json
+  
+  /{serviceId}:
+    get:
+      description: Get a specific service
+      responses:
+        200:
+          body:
+            example: !include examples/service.json
+    put:
+      description: Update a service
+      body:
+        schema: !include doc/service-schema.json
+        example: !include examples/service.json
+    delete:
+      description: Delete a specific service
+      responses:
+        200:
+          body:
+            example: |
+              { 
+                "success": true
+              }
+
