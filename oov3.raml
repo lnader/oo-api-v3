@@ -368,3 +368,81 @@ documentation:
             {
               "success": true
             }
+/user/{userID}:
+  get:
+    description: Get a specific user
+    body:
+      example: !include examples/user.json
+  put:
+    description: Update a user
+    body:
+      example: !include examples/user.json
+  delete:
+    description: Delete a user
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+/team/{teamID}:
+  get:
+    description: Get a specific team
+    body:
+      example: !include examples/team.json
+  put:
+    description: Update a team
+    body:
+      example: !include examples/team.json
+  delete:
+    description: Delete a team
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+/role/{roleID}:
+  get:
+    description: Get a specific role
+    body:
+      example: !include examples/role.json
+  put:
+    description: Update a role
+    body:
+      example: !include examples/role.json
+  delete:
+    description: Delete a role
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+
+/authorization/{authorizationID}:
+  get:
+    description: Get a specific authorization
+    body:
+      example: !include examples/authorization.json
+  post:
+    description: Create an new authorization
+    body:
+      example: !include examples/authorization-create.json
+  put:
+    description: Update a authorization
+    body:
+      example: !include examples/authorization.json
+  delete:
+    description: Delete a authorization
+    responses:
+      200:
+        body:
+          example: |
+            {
+              "success": true
+            }
+
