@@ -817,7 +817,7 @@ from services in a project by linking them together via service endpoints.</p>
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_builder_image_streams" class="panel-title">/builder-image-streams</h3>
+                            <h3 id="_image_repositories" class="panel-title">/image-repositories</h3>
                         </div>
 
                         <div class="panel-body">
@@ -827,7 +827,7 @@ from services in a project by linking them together via service endpoints.</p>
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__builder_image_streams">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__image_repositories">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -835,31 +835,31 @@ from services in a project by linking them together via service endpoints.</p>
                         <span class="badge badge_post">post</span>
                     
                 </span>
-                <span class="parent"></span>/builder-image-streams
+                <span class="parent"></span>/image-repositories
             </a>
         </h4>
     </div>
-    <div id="panel__builder_image_streams" class="panel-collapse collapse">
+    <div id="panel__image_repositories" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_builder_image_streams_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image_repositories_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Lists all builder image streams that you have access to.</p>
-<p>An image stream is a collection of images that share the same metadata. It contains 
+                            <p>Lists all image repositories that you have access to.</p>
+<p>An image repository is a collection of images that share the same metadata. It contains 
 multiple versions of an image as it evolves over time with new builds of the codebase. 
-An image stream may be associated with a build which can be triggered by an event such
-as a commit to a source repository. The build will then push a new image on to the stream.</p>
+An image repository may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the repository.</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_builder_image_streams_post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image_repositories_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Create a new image stream</p>
+                            <p>Create a new image repository</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -870,669 +870,39 @@ as a commit to a source repository. The build will then push a new image on to t
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_builder_image_streams_get">
+        <div class="modal fade" tabindex="0" id="_image_repositories_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/builder-image-streams
+                            <span class="parent"></span>/image-repositories
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Lists all builder image streams that you have access to.</p>
-<p>An image stream is a collection of images that share the same metadata. It contains 
+                        <div class="alert alert-info"><p>Lists all image repositories that you have access to.</p>
+<p>An image repository is a collection of images that share the same metadata. It contains 
 multiple versions of an image as it evolves over time with new builds of the codebase. 
-An image stream may be associated with a build which can be triggered by an event such
-as a commit to a source repository. The build will then push a new image on to the stream.</p>
+An image repository may be associated with a build which can be triggered by an event such
+as a commit to a source repository. The build will then push a new image on to the repository.</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_builder_image_streams_get_request" data-toggle="tab">Request</a>
+                                <a href="#_image_repositories_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_builder_image_streams_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_image_repositories_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_builder_image_streams_get_request">
-                                
-
-                                
-
-                                
-                                    <h3>Query Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>domainId</strong>
-                                                <em>
-                                                    
-                                                    
-                                                        (string)
-                                                    
-                                                </em>
-
-                                                <p>Filter list by domain</p>
-
-
-                                                
-
-                                                
-                                            </li>
-                                        
-                                            <li>
-                                                <strong>visibility</strong>
-                                                <em>
-                                                    
-                                                    
-                                                        (string)
-                                                    
-                                                </em>
-
-                                                <p>Filter by visibility (public, private)</p>
-
-
-                                                
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
-                                
-
-                                
-                            </div>
-
-                            
-                                <div class="tab-pane" id="_builder_image_streams_get_response">
-                                    
-                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
-                                        
-
-                                        
-
-                                        
-                                            <h3>Body</h3>
-                                            
-                                                <p><strong>Type: application/json</strong></p>
-
-                                                
-
-                                                
-                                                    <p>
-                                                        <small>
-                                                            <strong>Example</strong>:
-                                                            <pre>{
-  "<span class="hljs-attribute">list</span>":
-  <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
-      "<span class="hljs-attribute">environment</span>": 
-      <span class="hljs-value">{
-        "<span class="hljs-attribute">VAR1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-        "<span class="hljs-attribute">VAR2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
-        {
-          "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-          "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-        </span>}
-      ]</span>,
-      "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
-    </span>}
-  ]
-</span>}
-</pre>
-                                                        </small>
-                                                    </p>
-                                                
-                                            
-                                        
-                                    
-                                </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="modal fade" tabindex="0" id="_builder_image_streams_post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/builder-image-streams
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Create a new image stream</p>
-</div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_builder_image_streams_post_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_builder_image_streams_post_request">
-                                
-
-                                
-
-                                
-
-                                
-                                    <h3>Body</h3>
-                                    
-                                        <p><strong>Type: application/json</strong></p>
-                                        
-
-                                        
-
-                                        
-                                            <p>
-                                                <small>
-                                                    <strong>Example</strong>:
-                                                    <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
-    "<span class="hljs-attribute">environment</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
-      {
-        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
-  </span>}
-</span>}
-</pre>
-                                                </small>
-                                            </p>
-                                        
-                                    
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-</div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 id="_builder_image_stream__streamID_" class="panel-title">/builder-image-stream/{streamID}</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            
-
-                            <div class="panel-group">
-                                <div class="panel panel-white">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__builder_image_stream__streamID_">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_put">put</span>
-                    
-                        <span class="badge badge_delete">delete</span>
-                    
-                </span>
-                <span class="parent"></span>/builder-image-stream/{streamID}
-            </a>
-        </h4>
-    </div>
-    <div id="panel__builder_image_stream__streamID_" class="panel-collapse collapse">
-        <div class="panel-body">
-            <div class="list-group">
-                
-                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__get" class="list-group-item">
-                        <span class="badge badge_get">get</span>
-                        <div class="method_description">
-                            <p>Get information about an image stream</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__put" class="list-group-item">
-                        <span class="badge badge_put">put</span>
-                        <div class="method_description">
-                            <p>Update an image stream</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-                    <a href="#" data-toggle="modal" data-target="#_builder_image_stream__streamID__delete" class="list-group-item">
-                        <span class="badge badge_delete">delete</span>
-                        <div class="method_description">
-                            <p>Delete an image stream</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-            </div>
-        </div>
-    </div>
-
-    
-        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__get">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/builder-image-stream/{streamID}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Get information about an image stream</p>
-</div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_builder_image_stream__streamID__get_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_builder_image_stream__streamID__get_request">
-                                
-                                    <h3>URI Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
-                                
-
-                                
-
-                                
-
-                                
-                                    <h3>Body</h3>
-                                    
-                                        <p><strong>Type: application/json</strong></p>
-                                        
-
-                                        
-
-                                        
-                                            <p>
-                                                <small>
-                                                    <strong>Example</strong>:
-                                                    <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
-    "<span class="hljs-attribute">environment</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
-      {
-        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
-  </span>}
-</span>}
-</pre>
-                                                </small>
-                                            </p>
-                                        
-                                    
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__put">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_put">put</span>
-                            <span class="parent"></span>/builder-image-stream/{streamID}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Update an image stream</p>
-</div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_builder_image_stream__streamID__put_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_builder_image_stream__streamID__put_request">
-                                
-                                    <h3>URI Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
-                                
-
-                                
-
-                                
-
-                                
-                                    <h3>Body</h3>
-                                    
-                                        <p><strong>Type: application/json</strong></p>
-                                        
-
-                                        
-
-                                        
-                                            <p>
-                                                <small>
-                                                    <strong>Example</strong>:
-                                                    <pre>{
-  "<span class="hljs-attribute">data</span>":
-  <span class="hljs-value">{
-    "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"public"</span></span>,
-    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"domain"</span></span>,
-    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"server/domain/nginx"</span></span>,
-    "<span class="hljs-attribute">environment</span>": 
-    <span class="hljs-value">{
-      "<span class="hljs-attribute">name1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span></span>,
-      "<span class="hljs-attribute">name2</span>": <span class="hljs-value"><span class="hljs-string">"value2"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">networkPorts</span>": <span class="hljs-value">[
-      {
-        "<span class="hljs-attribute">hostPort</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-        "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
-      </span>}
-    ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
-  </span>}
-</span>}
-</pre>
-                                                </small>
-                                            </p>
-                                        
-                                    
-                                
-                            </div>
-
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="modal fade" tabindex="0" id="_builder_image_stream__streamID__delete">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_delete">delete</span>
-                            <span class="parent"></span>/builder-image-stream/{streamID}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Delete an image stream</p>
-</div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_builder_image_stream__streamID__delete_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                                <li>
-                                    <a href="#_builder_image_stream__streamID__delete_response" data-toggle="tab">Response</a>
-                                </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_builder_image_stream__streamID__delete_request">
-                                
-                                    <h3>URI Parameters</h3>
-                                    <ul>
-                                        
-                                            <li>
-                                                <strong>streamID</strong>:
-                                                <em>
-                                                    
-                                                        required
-                                                    
-                                                    (string)
-                                                </em>
-
-                                                
-                                            </li>
-                                        
-                                    </ul>
-                                
-
-                                
-
-                                
-
-                                
-                            </div>
-
-                            
-                                <div class="tab-pane" id="_builder_image_stream__streamID__delete_response">
-                                    
-                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
-                                        
-
-                                        
-
-                                        
-                                            <h3>Body</h3>
-                                            
-                                                <p><strong>Type: application/json</strong></p>
-
-                                                
-
-                                                
-                                                    <p>
-                                                        <small>
-                                                            <strong>Example</strong>:
-                                                            <pre>{
-  "<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}
-</pre>
-                                                        </small>
-                                                    </p>
-                                                
-                                            
-                                        
-                                    
-                                </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-</div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 id="_image_streams" class="panel-title">/image-streams</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            
-
-                            <div class="panel-group">
-                                <div class="panel panel-white">
-    <div class="panel-heading">
-        <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__image_streams">
-                <span class="methods">
-                    
-                        <span class="badge badge_get">get</span>
-                    
-                        <span class="badge badge_post">post</span>
-                    
-                </span>
-                <span class="parent"></span>/image-streams
-            </a>
-        </h4>
-    </div>
-    <div id="panel__image_streams" class="panel-collapse collapse">
-        <div class="panel-body">
-            <div class="list-group">
-                
-                    <a href="#" data-toggle="modal" data-target="#_image_streams_get" class="list-group-item">
-                        <span class="badge badge_get">get</span>
-                        <div class="method_description">
-                            <p>Lists all image streams that you have access to.</p>
-<p>An image stream is a collection of images that share the same metadata. It contains 
-multiple versions of an image as it evolves over time with new builds of the codebase. 
-An image stream may be associated with a build which can be triggered by an event such
-as a commit to a source repository. The build will then push a new image on to the stream.</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-                    <a href="#" data-toggle="modal" data-target="#_image_streams_post" class="list-group-item">
-                        <span class="badge badge_post">post</span>
-                        <div class="method_description">
-                            <p>Create a new image stream</p>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                
-            </div>
-        </div>
-    </div>
-
-    
-        <div class="modal fade" tabindex="0" id="_image_streams_get">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/image-streams
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="alert alert-info"><p>Lists all image streams that you have access to.</p>
-<p>An image stream is a collection of images that share the same metadata. It contains 
-multiple versions of an image as it evolves over time with new builds of the codebase. 
-An image stream may be associated with a build which can be triggered by an event such
-as a commit to a source repository. The build will then push a new image on to the stream.</p>
-</div>
-
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a href="#_image_streams_get_request" data-toggle="tab">Request</a>
-                            </li>
-                            
-                                <li>
-                                    <a href="#_image_streams_get_response" data-toggle="tab">Response</a>
-                                </li>
-                            
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="_image_streams_get_request">
+                            <div class="tab-pane active" id="_image_repositories_get_request">
                                 
 
                                 
@@ -1582,7 +952,7 @@ as a commit to a source repository. The build will then push a new image on to t
                             </div>
 
                             
-                                <div class="tab-pane" id="_image_streams_get_response">
+                                <div class="tab-pane" id="_image_repositories_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -1618,7 +988,7 @@ as a commit to a source repository. The build will then push a new image on to t
           "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
         </span>}
       ]</span>,
-      "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+      "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"v5"</span>
     </span>}
   ]
 </span>}
@@ -1637,31 +1007,31 @@ as a commit to a source repository. The build will then push a new image on to t
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_image_streams_post">
+        <div class="modal fade" tabindex="0" id="_image_repositories_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/image-streams
+                            <span class="parent"></span>/image-repositories
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Create a new image stream</p>
+                        <div class="alert alert-info"><p>Create a new image repository</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_streams_post_request" data-toggle="tab">Request</a>
+                                <a href="#_image_repositories_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_streams_post_request">
+                            <div class="tab-pane active" id="_image_repositories_post_request">
                                 
 
                                 
@@ -1697,7 +1067,7 @@ as a commit to a source repository. The build will then push a new image on to t
         "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
       </span>}
     ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+    "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"v4"</span>
   </span>}
 </span>}
 </pre>
@@ -1725,7 +1095,7 @@ as a commit to a source repository. The build will then push a new image on to t
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_image_stream__streamID_" class="panel-title">/image-stream/{streamID}</h3>
+                            <h3 id="_image_repository__repositoryID_" class="panel-title">/image-repository/{repositoryID}</h3>
                         </div>
 
                         <div class="panel-body">
@@ -1735,7 +1105,7 @@ as a commit to a source repository. The build will then push a new image on to t
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-            <a class="block collapsed" data-toggle="collapse" href="#panel__image_stream__streamID_">
+            <a class="block collapsed" data-toggle="collapse" href="#panel__image_repository__repositoryID_">
                 <span class="methods">
                     
                         <span class="badge badge_get">get</span>
@@ -1745,36 +1115,36 @@ as a commit to a source repository. The build will then push a new image on to t
                         <span class="badge badge_delete">delete</span>
                     
                 </span>
-                <span class="parent"></span>/image-stream/{streamID}
+                <span class="parent"></span>/image-repository/{repositoryID}
             </a>
         </h4>
     </div>
-    <div id="panel__image_stream__streamID_" class="panel-collapse collapse">
+    <div id="panel__image_repository__repositoryID_" class="panel-collapse collapse">
         <div class="panel-body">
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image_repository__repositoryID__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
-                            <p>Get information about an image stream</p>
+                            <p>Get information about an image repository</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__put" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image_repository__repositoryID__put" class="list-group-item">
                         <span class="badge badge_put">put</span>
                         <div class="method_description">
-                            <p>Update an image stream</p>
+                            <p>Update an image repository</p>
 
                         </div>
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#_image_stream__streamID__delete" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_image_repository__repositoryID__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
                         <div class="method_description">
-                            <p>Delete an image stream</p>
+                            <p>Delete an image repository</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -1785,37 +1155,37 @@ as a commit to a source repository. The build will then push a new image on to t
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__get">
+        <div class="modal fade" tabindex="0" id="_image_repository__repositoryID__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/image-stream/{streamID}
+                            <span class="parent"></span>/image-repository/{repositoryID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Get information about an image stream</p>
+                        <div class="alert alert-info"><p>Get information about an image repository</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__get_request" data-toggle="tab">Request</a>
+                                <a href="#_image_repository__repositoryID__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__get_request">
+                            <div class="tab-pane active" id="_image_repository__repositoryID__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>streamID</strong>:
+                                                <strong>repositoryID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -1862,7 +1232,7 @@ as a commit to a source repository. The build will then push a new image on to t
         "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
       </span>}
     ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+    "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"v4"</span>
   </span>}
 </span>}
 </pre>
@@ -1880,37 +1250,37 @@ as a commit to a source repository. The build will then push a new image on to t
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__put">
+        <div class="modal fade" tabindex="0" id="_image_repository__repositoryID__put">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_put">put</span>
-                            <span class="parent"></span>/image-stream/{streamID}
+                            <span class="parent"></span>/image-repository/{repositoryID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Update an image stream</p>
+                        <div class="alert alert-info"><p>Update an image repository</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__put_request" data-toggle="tab">Request</a>
+                                <a href="#_image_repository__repositoryID__put_request" data-toggle="tab">Request</a>
                             </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__put_request">
+                            <div class="tab-pane active" id="_image_repository__repositoryID__put_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>streamID</strong>:
+                                                <strong>repositoryID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -1957,7 +1327,7 @@ as a commit to a source repository. The build will then push a new image on to t
         "<span class="hljs-attribute">containerPort</span>": <span class="hljs-value"><span class="hljs-number">80</span>
       </span>}
     ]</span>,
-    "<span class="hljs-attribute">latest-image</span>":<span class="hljs-value"><span class="hljs-string">"nginx-10273491827349324"</span>
+    "<span class="hljs-attribute">latest</span>":<span class="hljs-value"><span class="hljs-string">"v4"</span>
   </span>}
 </span>}
 </pre>
@@ -1975,41 +1345,41 @@ as a commit to a source repository. The build will then push a new image on to t
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="_image_stream__streamID__delete">
+        <div class="modal fade" tabindex="0" id="_image_repository__repositoryID__delete">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_delete">delete</span>
-                            <span class="parent"></span>/image-stream/{streamID}
+                            <span class="parent"></span>/image-repository/{repositoryID}
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Delete an image stream</p>
+                        <div class="alert alert-info"><p>Delete an image repository</p>
 </div>
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#_image_stream__streamID__delete_request" data-toggle="tab">Request</a>
+                                <a href="#_image_repository__repositoryID__delete_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#_image_stream__streamID__delete_response" data-toggle="tab">Response</a>
+                                    <a href="#_image_repository__repositoryID__delete_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="_image_stream__streamID__delete_request">
+                            <div class="tab-pane active" id="_image_repository__repositoryID__delete_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
                                         
                                             <li>
-                                                <strong>streamID</strong>:
+                                                <strong>repositoryID</strong>:
                                                 <em>
                                                     
                                                         required
@@ -2031,7 +1401,7 @@ as a commit to a source repository. The build will then push a new image on to t
                             </div>
 
                             
-                                <div class="tab-pane" id="_image_stream__streamID__delete_response">
+                                <div class="tab-pane" id="_image_repository__repositoryID__delete_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -2170,7 +1540,7 @@ the metadata that has already been specified in the image through its Dockerfile
                                     <ul>
                                         
                                             <li>
-                                                <strong>streamId</strong>
+                                                <strong>repositoryId</strong>
                                                 <em>
                                                     
                                                     
@@ -2178,7 +1548,7 @@ the metadata that has already been specified in the image through its Dockerfile
                                                     
                                                 </em>
 
-                                                <p>Filter list by stream</p>
+                                                <p>Filter list by repository</p>
 
 
                                                 
@@ -2515,8 +1885,8 @@ the metadata that has already been specified in the image through its Dockerfile
                         <div class="method_description">
                             <p>Lists all services that your account has access to</p>
 <p>Services can be public or owned by a project. They contain a template of a pod and
-reference image streams that supply the images for those templates. A service may 
-be configured to react to an image being pushed to an image stream by initiating a 
+reference image repositories that supply the images for those templates. A service may 
+be configured to react to an image being pushed to an image repository by initiating a 
 deployment. Deployments are associated with a service and make use of 
 Kubernetes replication controllers to manage pods in a cluster.
 For deployments, a service contains a policy that constrains how deployments can occur.
@@ -2554,8 +1924,8 @@ A deployment needs to operate under those constraints when making changes.</p>
                     <div class="modal-body">
                         <div class="alert alert-info"><p>Lists all services that your account has access to</p>
 <p>Services can be public or owned by a project. They contain a template of a pod and
-reference image streams that supply the images for those templates. A service may 
-be configured to react to an image being pushed to an image stream by initiating a 
+reference image repositories that supply the images for those templates. A service may 
+be configured to react to an image being pushed to an image repository by initiating a 
 deployment. Deployments are associated with a service and make use of 
 Kubernetes replication controllers to manage pods in a cluster.
 For deployments, a service contains a policy that constrains how deployments can occur.
@@ -3763,7 +3133,7 @@ to bring about the changes.</p>
                     <a href="#" data-toggle="modal" data-target="#_deployments_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
-                            <p>Create a new image in the stream</p>
+                            <p>Create a new deployment</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -3896,7 +3266,7 @@ to bring about the changes.</p>
                         </h4>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-info"><p>Create a new image in the stream</p>
+                        <div class="alert alert-info"><p>Create a new deployment</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -5348,10 +4718,10 @@ is that in v3 an alias is associated with a service, not an application.</p>
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Retrieves a list of builds visible to you</p>
-<p>A build is associated with an image stream and can be triggered by a webhook
+<p>A build is associated with an image repository and can be triggered by a webhook
 on Github. It can either be a Docker build or a source build based on a 
 specified image. When a build completes, it posts a new image to the image
-stream that it&#39;s associated with.</p>
+repository that it&#39;s associated with.</p>
 
                         </div>
                         <div class="clearfix"></div>
@@ -5383,10 +4753,10 @@ stream that it&#39;s associated with.</p>
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info"><p>Retrieves a list of builds visible to you</p>
-<p>A build is associated with an image stream and can be triggered by a webhook
+<p>A build is associated with an image repository and can be triggered by a webhook
 on Github. It can either be a Docker build or a source build based on a 
 specified image. When a build completes, it posts a new image to the image
-stream that it&#39;s associated with.</p>
+repository that it&#39;s associated with.</p>
 </div>
 
                         <!-- Nav tabs -->
@@ -9079,13 +8449,9 @@ that project.</p>
                         
                             <li><a href="#_project__projectID_">/project/{projectID}</a></li>
                         
-                            <li><a href="#_builder_image_streams">/builder-image-streams</a></li>
+                            <li><a href="#_image_repositories">/image-repositories</a></li>
                         
-                            <li><a href="#_builder_image_stream__streamID_">/builder-image-stream/{streamID}</a></li>
-                        
-                            <li><a href="#_image_streams">/image-streams</a></li>
-                        
-                            <li><a href="#_image_stream__streamID_">/image-stream/{streamID}</a></li>
+                            <li><a href="#_image_repository__repositoryID_">/image-repository/{repositoryID}</a></li>
                         
                             <li><a href="#_images">/images</a></li>
                         

@@ -16,7 +16,7 @@
           "containerPort": 80
         }
       ],
-      "latest":"nginx-10273491827349324"
+      "latest":"v5"
     }
   ]
 }

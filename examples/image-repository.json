@@ -15,6 +15,6 @@
         "containerPort": 80
       }
     ],
-    "latest-image":"nginx-10273491827349324"
+    "latest":"v4"
   }
 }

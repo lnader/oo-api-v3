@@ -48,49 +48,7 @@ documentation:
       description: Instantiate a template in the given project
       body:
         example: !include examples/project-post.json
-/builder-image-streams:
-  get:
-    queryParameters:
-      domainId:
-        description: Filter list by domain
-        type: string
-      visibility:
-        description: Filter by visibility (public, private)
-        type: string
-    description: |
-      Lists all builder image streams that you have access to.
-      
-      An image stream is a collection of images that share the same metadata. It contains 
-      multiple versions of an image as it evolves over time with new builds of the codebase. 
-      An image stream may be associated with a build which can be triggered by an event such
-      as a commit to a source repository. The build will then push a new image on to the stream.
-    responses:
-      200:
-        body:
-          example: !include examples/image-streams.json
-  post:
-    description: Create a new image stream
-    body:
-      example: !include examples/image-stream.json
-/builder-image-stream/{streamID}:
-    get:
-      description: Get information about an image stream
-      body:
-        example: !include examples/image-stream.json
-    put:
-      description: Update an image stream
-      body:
-        example: !include examples/image-stream.json
-    delete:
-      description: Delete an image stream
-      responses:
-        200:
-          body:
-            example: |
-              {
-                "success": true
-              }
-/image-streams:
+/image-repositories:
   get:
     queryParameters:
       projectId:
@@ -100,31 +58,31 @@ documentation:
         description: Filter by visibility (public, private)
         type: string
     description: |
-      Lists all image streams that you have access to.
+      Lists all image repositories that you have access to.
       
-      An image stream is a collection of images that share the same metadata. It contains 
+      An image repository is a collection of images that share the same metadata. It contains 
       multiple versions of an image as it evolves over time with new builds of the codebase. 
-      An image stream may be associated with a build which can be triggered by an event such
-      as a commit to a source repository. The build will then push a new image on to the stream.
+      An image repository may be associated with a build which can be triggered by an event such
+      as a commit to a source repository. The build will then push a new image on to the repository.
     responses:
       200:
         body:
-          example: !include examples/image-streams.json
+          example: !include examples/image-repositories.json
   post:
-    description: Create a new image stream
+    description: Create a new image repository
     body:
-      example: !include examples/image-stream.json
-/image-stream/{streamID}:
+      example: !include examples/image-repository.json
+/image-repository/{repositoryID}:
     get:
-      description: Get information about an image stream
+      description: Get information about an image repository
       body:
-        example: !include examples/image-stream.json
+        example: !include examples/image-repository.json
     put:
-      description: Update an image stream
+      description: Update an image repository
       body:
-        example: !include examples/image-stream.json
+        example: !include examples/image-repository.json
     delete:
-      description: Delete an image stream
+      description: Delete an image repository
       responses:
         200:
           body:
@@ -135,8 +93,8 @@ documentation:
 /images:
   get:
     queryParameters:
-      streamId:
-        description: Filter list by stream
+      repositoryId:
+        description: Filter list by repository
         type: string
     description: |
       Lists images visible to you
@@ -164,8 +122,8 @@ documentation:
       Lists all services that your account has access to
       
       Services can be public or owned by a project. They contain a template of a pod and
-      reference image streams that supply the images for those templates. A service may 
-      be configured to react to an image being pushed to an image stream by initiating a 
+      reference image repositories that supply the images for those templates. A service may 
+      be configured to react to an image being pushed to an image repository by initiating a 
       deployment. Deployments are associated with a service and make use of 
       Kubernetes replication controllers to manage pods in a cluster.
       For deployments, a service contains a policy that constrains how deployments can occur.
@@ -244,7 +202,7 @@ documentation:
         body:
           example: !include examples/deployments.json
   post:
-    description: Create a new image in the stream
+    description: Create a new deployment
     body:
       example: !include examples/create-deployment.json
 /deployment/{deploymentID}:
@@ -332,10 +290,10 @@ documentation:
     description: |
       Retrieves a list of builds visible to you
 
-      A build is associated with an image stream and can be triggered by a webhook
+      A build is associated with an image repository and can be triggered by a webhook
       on Github. It can either be a Docker build or a source build based on a 
       specified image. When a build completes, it posts a new image to the image
-      stream that it's associated with.
+      repository that it's associated with.
     responses:
       200:
         body:
