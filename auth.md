@@ -60,7 +60,12 @@ Authorization Grant
    **Note, in this document we are only going to cover grant types:**
    
    - resource owner password credentials
+
+   Review: We probably want client credentials instead of resource owner password credentials - client matches the standard basic auth -> token flow and is simpler.  Please update the below if that's the case.
+
    - authorization code
+
+Review: In all of the following sections, please include links to the OAuth2 RFC for the appropriate topic.  If the section is very close, it would be better to reduce the amount of copying and describe how we would use the spec.  As is, it's very difficult to determine whether any of the sections are different from the spec, and where there's a conflict it would be important to say that, so just having "The spec says X, but in this case we should do Y" would be better than having a lot of these large chunks.
 
 
 Resource Owner Password Credentials
@@ -624,9 +629,15 @@ New Resources
 
 **User**
 
+Review: Please see the latest pep - I think we want to call this Account.  Also, it's important to note that even in OpenShift today we distinguish between who you are logged in as (**identity**) and what you are allowed to do (**account/user**).  We need to call **identity** out as an explicit relationship here
+
 This resource represents the end-user of the Kubernetes API. It will be stored in etcd along with the existing Kubernetes resources i.e. pods, replication controllers, etc.
 
+Review: Would not mention etcd here - would just say "account/user is a global available through the UI"
+
 A new user resource can be created via POST /users by the end-user (if self-registration is enabled) or by an administrator.
+
+Review: What's the use case here?  We don't support this in OpenShift - mostly because very few people want self-registration - so I don't know why we'd do it here
 
 _Example_
 
@@ -638,6 +649,8 @@ _Example_
            "role" : "developer",
            "entitlements": ["create_project", "create_template", "create_pod"]
          }
+
+Review: Can you define entitlements?  What OpenShift resource does it map to?  Also, as noted, if this is an **account** then password and username do not belong on this resource, they belong on the identity.
 
 The following parameters are optional:
 - password - a temporary password will be generated if not provided.
@@ -679,10 +692,13 @@ The users parameter is optional and can be updates via PUT requests.
            "owner": "53c4249f076573c0f4000001"
          }
 
+Review: Are groups global, project specific, or both?
 
 **Role**
 
 This resource represents a set of capabilites that can be assigned to a user or group as part of access control assignment. 
+
+Review: What use case do entitlements add here?  In OpenShift, we chose three very specific roles to model.  How do entitlements make things easier for end users / admins?  Would there be roles defined out of the box?  How does a client UI build an experience around assigning arbitrary roles?  Are roles global or project specific?
 
 _Example_
 
@@ -704,6 +720,8 @@ _Example_
 
 We have already described these new resources and their endpoints in the previous section. 
 
+Review: The existing OpenShift use case (I can create an arbitrary token with arbitrary scopes and a long expiration) probably needs to be carried forward.  How would an end user create that token?  What endpoint?  What scopes are supported?
+
 
 Granting access to resources
 ============================
@@ -719,6 +737,8 @@ _Example_
            "users": ["63c4249f088573c0f4000090", "54a4249f076573c0f4000022"]
            "owner": "53c4249f076573c0f4000001"
          }
+
+Review: What does "users" mean as an owner?  Why does a resource have multiple "users"?  Also, which resources does this apply to?
 
 Another type of implicit grant worth mentioning is by viture of parent child relationship.  For example if a user has viewing rights on a project, they will have viewing right to the related resources like services, pod, etc.
 
@@ -750,13 +770,16 @@ _Example_
                             ]
          }
 
+Review: Why the choice of principal as the name here here?  Having to look up a role by ID will also suck for naive clients - is the idea that you're exposing the entitlements directly and so it's less of an issue?  What if the list of entitlements is extremely long?  How do I find a principal ID for a given user (what resources will support me doing that)?  Why entitlements for the group?  Is that implying that the role is being bypassed?  How do I write a client that can deal with that?
+
+Review: It's not clear from this example, but I'm assuming accessible_to is returned as a field of GET /projects/id?
+
 The following parameters are optional:
 - role - defaults to null
 - entitlements - defaults to null
 
 However, for the access grant to make sense one or both need to be defined. The entitlements parameters can be used by itself or to add entitlements above and beyond granted by the role.
 
+Review: Need a section here that describes how the OpenShift 2.x system and use cases matches up to this (for the OpenShift audience)
 
-
-
-
+Review: Can you describe in this document how this differs from the GCE and OpenStack models and why differences exist between them?  Are there other existing ACL/auth models you're basing this on that can be described, and why you chose those ideas?
