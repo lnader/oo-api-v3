@@ -30,14 +30,14 @@ OAuth Terminology
    Authorization Server and Resource Server are one of the same.***
 
    **Authorization code**  
-      Condensed and copied for your convenience from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.3.1
+      Condensed and copied for your convenience from [OAuth2.0]9http://tools.ietf.org/html/rfc6749#section-1.3.1)
 
       An authorization code is a credential representing the resource
       owner's authorization (to access its protected resources) used by the
       client to obtain an access token. 
 
    **Access token**  
-      Condensed and copied for your convenience from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.4
+      Condensed and copied for your convenience from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.4)
 
       Access tokens are credentials used to access protected resources.  An
       access token is a string representing an authorization issued to the
@@ -56,10 +56,10 @@ Authorization Grant
 -------------------
    The OAuth specification defines four grant types: 
    
-   - authorization code.                    More details at [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.3.1
-   - implicit                               More details at [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.3.2
-   - resource owner password credentials    More details at [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.3.3 
-   - client credentials                     More details at [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.3.4 
+   - authorization code.                    More details at [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.3.1)
+   - implicit                               More details at [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.3.2)
+   - resource owner password credentials    More details at [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.3.3)
+   - client credentials                     More details at [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.3.4)
    
    It also provides an extension mechanism for defining additional grant types.
 
@@ -71,7 +71,7 @@ Authorization Grant
 
 Resource Owner Password Credentials
 -----------------------------------
-   Copied over from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.3
+   Copied over from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.3)
 
    The resource owner password credentials (i.e., username and password)
    can be used directly as an authorization grant to obtain an access
@@ -121,7 +121,7 @@ Resource Owner Password Credentials
 
 Authorization Code
 ------------------
-   Copied over from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1
+   Copied over from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1)
 
    The authorization code is obtained by using an authorization server
    as an intermediary between the client and resource owner.  Instead of
@@ -262,7 +262,7 @@ Token Endpoint
 
 Authorization Request
 ---------------------
-   Compiled from combining for brevity [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1.1 and [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.2.1
+   Compiled from combining [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1.1) and [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.2.1)
 
    The client constructs the request URI by adding the following
    parameters to the query component of the authorization endpoint URI
@@ -307,7 +307,7 @@ Authorization Request
 
 Authorization Response
 ----------------------
-   Copied over from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1.2
+   Copied over from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1.2)
 
    If the resource owner grants the access request, the authorization
    server issues an authorization code and delivers it to the client by
@@ -346,7 +346,7 @@ Authorization Response
 
 Authorization Request Error Response
 ------------------------------------
-   Copied over from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1.2.1
+   Copied over from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1.2.1)
    
    If the request fails due to a missing, invalid, or mismatching
    redirection URI, or if the client identifier is missing or invalid,
@@ -429,7 +429,7 @@ Authorization Request Error Response
 
 Access Token Request
 --------------------
-   Compiled from combining [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1.3 and [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.3.2
+   Compiled from combining [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1.3) and [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.3.2)
 
    The client makes a request to the token endpoint by sending the
    following parameters using the "application/x-www-form-urlencoded"
@@ -499,7 +499,7 @@ Access Token Request
 
 Access Token Response
 ---------------------
-   Compiled from combining [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.1.4 and [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-4.3.3
+   Compiled from combining [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.1.4) and [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-4.3.3)
 
    The authorization server issues an access token and optional refresh
    token, and constructs the response by adding the following parameters
