@@ -4,7 +4,8 @@ This document describes the proposed plan for adding authentication and authoriz
 
 OAuth Terminology
 -----------------
-   Copied over from [OAuth2.0]: http://tools.ietf.org/html/rfc6749#section-1.1
+   Copied over from [OAuth2.0](http://tools.ietf.org/html/rfc6749#section-1.1)
+
    **resource owner**  
       An entity capable of granting access to a protected resource.
       When the resource owner is a person, it is referred to as an
