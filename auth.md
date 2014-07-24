@@ -30,14 +30,14 @@ OAuth Terminology
   Authorization Server and Resource Server are one of the same.***
 
   **Authorization code**  
-  Condensed and copied for your convenience from [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1)  
+  Condensed and copied from [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1)  
 
   An authorization code is a credential representing the resource
   owner's authorization (to access its protected resources) used by the
   client to obtain an access token. 
 
   **Access token**  
-  Condensed and copied for your convenience from [OAuth-2.0-section-1.4](http://tools.ietf.org/html/rfc6749#section-1.4)  
+  Condensed and copied from [OAuth-2.0-section-1.4](http://tools.ietf.org/html/rfc6749#section-1.4)  
 
   Access tokens are credentials used to access protected resources.  An
   access token is a string representing an authorization issued to the
@@ -222,43 +222,25 @@ Protocol Endpoints
    -  Token endpoint - used by the client to exchange an authorization
       grant for an access token, typically with client authentication.
 
+   For a full list of endpoints not covered in this document see [OAuth-2.0-section-3](http://tools.ietf.org/html/rfc6749#section-3)
  
 Authorization Endpoint
 ----------------------
    The authorization endpoint is used to interact with the resource
    owner and obtain an authorization grant.  The authorization server
-   MUST first verify the identity of the resource owner.  The way in
-   which the authorization server authenticates the resource owner.
+   MUST first verify the identity of the resource owner. 
 
-   Since requests to the authorization endpoint result in user
-   authentication and the transmission of clear-text credentials (in the
-   HTTP response), the authorization server MUST require the use of TLS
-   when sending requests to the authorization endpoint.
-
-   Parameters sent without a value MUST be treated as if they were
-   omitted from the request.  The authorization server MUST ignore
-   unrecognized request parameters.  Request and response parameters
-   MUST NOT be included more than once.
+   See more info [OAuth-2.0-section-3.1](http://tools.ietf.org/html/rfc6749#section-3.1)
 
 Token Endpoint
 --------------
+
    The token endpoint is used by the client to obtain an access token by
    presenting its authorization grant or refresh token.  The token
    endpoint is used with every authorization grant except for the
    implicit grant type (since an access token is issued directly).
 
-   Since requests to the token endpoint result in the transmission of
-   clear-text credentials (in the HTTP request and response), the
-   authorization server MUST require the use of TLS when sending 
-   requests to the token endpoint.
-
-   The client MUST use the HTTP "POST" method when making access token
-   requests.
-
-   Parameters sent without a value MUST be treated as if they were
-   omitted from the request.  The authorization server MUST ignore
-   unrecognized request parameters.  Request and response parameters
-   MUST NOT be included more than once.
+   See more info [OAuth-2.0-section-3.2](http://tools.ietf.org/html/rfc6749#section-3.2)
 
 Authorization Request
 ---------------------
@@ -558,6 +540,8 @@ Access Token Response
 
 Access Token Error Response
 ---------------------------
+   Copied over from [OAuth-2.0-section-5.2](http://tools.ietf.org/html/rfc6749#section-5.2)
+
    The authorization server responds with an HTTP 400 (Bad Request)
    status code (unless specified otherwise) and includes the following
    parameters with the response:
