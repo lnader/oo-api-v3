@@ -56,10 +56,10 @@ Authorization Grant
 -------------------
    The OAuth specification defines four grant types: 
    
-   - Authorization Code [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1)
-   - Implicit [OAuth-2.0-section-1.3.2](http://tools.ietf.org/html/rfc6749#section-1.3.2)
-   - Resource Owner Password Credentials [OAuth-2.0-section-1.3.3](http://tools.ietf.org/html/rfc6749#section-1.3.3)
-   - Client Credentials  [OAuth-2.0-section-1.3.4](http://tools.ietf.org/html/rfc6749#section-1.3.4)
+   - Authorization Code (See [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1))
+   - Implicit (See [OAuth-2.0-section-1.3.2](http://tools.ietf.org/html/rfc6749#section-1.3.2))
+   - Resource Owner Password Credentials (See [OAuth-2.0-section-1.3.3](http://tools.ietf.org/html/rfc6749#section-1.3.3))
+   - Client Credentials (See [OAuth-2.0-section-1.3.4](http://tools.ietf.org/html/rfc6749#section-1.3.4))
    
    It also provides an extension mechanism for defining additional grant types.
 
