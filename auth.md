@@ -4,52 +4,52 @@ This document describes the proposed plan for adding authentication and authoriz
 
 OAuth Terminology
 -----------------
-   Copied over from [OAuth-2.0-section-1.1](http://tools.ietf.org/html/rfc6749#section-1.1)
+  Copied over from [OAuth-2.0-section-1.1](http://tools.ietf.org/html/rfc6749#section-1.1)
 
-   **resource owner**  
-      An entity capable of granting access to a protected resource.
-      When the resource owner is a person, it is referred to as an
-      end-user.
+  **resource owner**  
+  An entity capable of granting access to a protected resource.
+  When the resource owner is a person, it is referred to as an
+  end-user.
 
-   **client**  
-      An application making protected resource requests on behalf of the
-      resource owner and with its authorization.  The term "client" does
-      not imply any particular implementation characteristics (e.g.,
-      whether the application executes on a server, a desktop, or other
-      devices).
+  **client**  
+  An application making protected resource requests on behalf of the
+  resource owner and with its authorization.  The term "client" does
+  not imply any particular implementation characteristics (e.g.,
+  whether the application executes on a server, a desktop, or other
+  devices).
 
-   **resource server**  
-      The server hosting the protected resources, capable of accepting
-      and responding to protected resource requests using access tokens.
+  **resource server**  
+  The server hosting the protected resources, capable of accepting
+  and responding to protected resource requests using access tokens.
 
-   **authorization server**  
-      The server issuing access tokens to the client after successfully
-      authenticating the resource owner and obtaining authorization.
+  **authorization server**  
+  The server issuing access tokens to the client after successfully
+  authenticating the resource owner and obtaining authorization.
 
-   ***NOTE: In the proposed "default" implementation of OAuth in Kubernetes the 
-   Authorization Server and Resource Server are one of the same.***
+  ***NOTE: In the proposed "default" implementation of OAuth in Kubernetes the 
+  Authorization Server and Resource Server are one of the same.***
 
-   **Authorization code**  
-      Condensed and copied for your convenience from [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1)  
+  **Authorization code**  
+  Condensed and copied for your convenience from [OAuth-2.0-section-1.3.1](http://tools.ietf.org/html/rfc6749#section-1.3.1)  
 
-      An authorization code is a credential representing the resource
-      owner's authorization (to access its protected resources) used by the
-      client to obtain an access token. 
+  An authorization code is a credential representing the resource
+  owner's authorization (to access its protected resources) used by the
+  client to obtain an access token. 
 
-   **Access token**  
-      Condensed and copied for your convenience from [OAuth-2.0-section-1.4](http://tools.ietf.org/html/rfc6749#section-1.4)  
+  **Access token**  
+  Condensed and copied for your convenience from [OAuth-2.0-section-1.4](http://tools.ietf.org/html/rfc6749#section-1.4)  
 
-      Access tokens are credentials used to access protected resources.  An
-      access token is a string representing an authorization issued to the
-      client.  The string is usually opaque to the client.  Tokens
-      represent specific scopes and duration of access, granted by the
-      resource owner, and enforced by the resource server and authorization
-      server. The access token provides an abstraction layer, replacing 
-      different authorization constructs (e.g., username and password) with
-      a single token understood by the resource server.  This abstraction enables
-      issuing access tokens more restrictive than the authorization grant
-      used to obtain them, as well as removing the resource server's need
-      to understand a wide range of authentication methods.
+  Access tokens are credentials used to access protected resources.  An
+  access token is a string representing an authorization issued to the
+  client.  The string is usually opaque to the client.  Tokens
+  represent specific scopes and duration of access, granted by the
+  resource owner, and enforced by the resource server and authorization
+  server. The access token provides an abstraction layer, replacing 
+  different authorization constructs (e.g., username and password) with
+  a single token understood by the resource server.  This abstraction enables
+  issuing access tokens more restrictive than the authorization grant
+  used to obtain them, as well as removing the resource server's need
+  to understand a wide range of authentication methods.
 
 
 Authorization Grant
