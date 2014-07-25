@@ -228,7 +228,7 @@ Authorization Endpoint
 ----------------------
    The authorization endpoint is used to interact with the resource
    owner and obtain an authorization grant.  The authorization server
-   MUST first verify the identity of the resource owner. 
+   MUST first verify the identity of the resource owner.  
 
    See more info [OAuth-2.0-section-3.1](http://tools.ietf.org/html/rfc6749#section-3.1)
 
@@ -628,7 +628,7 @@ New Resources
 
 **User**
 
-This resource represents the end-user of the Kubernetes API. It will be stored in etcd along with the existing Kubernetes resources i.e. pods, replication controllers, etc.
+This resource represents the end-user of the Kubernetes API. 
 
 A new user resource can be created via POST /users by the end-user (if self-registration is enabled) or by an administrator.
 
@@ -686,7 +686,7 @@ The users parameter is optional and can be updates via PUT requests.
 
 **Role**
 
-This resource represents a set of capabilites that can be assigned to a user or group as part of access control assignment. 
+This resource represents a set of entitlements that can be assigned to a user or group as part of access control assignment. Note that a user can be added to the system with a role that grants them access to create resources not associated with a particular project like groups, users, pods, etc.  A user also can be given a different role in context of a resource.
 
 _Example_
 
@@ -704,6 +704,27 @@ _Example_
            "owner": "53c4249f076573c0f4000001"
          }
 
+_Example_
+
+         Request: POST /roles
+         {
+           "name": "administrator",
+           "entitlements": ["admin_users", "admin_groups", "admin_roles"]
+         }
+
+         Response: HTTP/1.1 201 CREATED
+         {
+           "id": "53c4249f076573c0f4000023",
+           "name": "administrator",
+           "entitlements": ["admin_users", "admin_groups", "admin_roles"]
+           "owner": "53c4249f076573c0f4000001"
+         }
+
+**entitlements**
+There are 2 ways of defining entitlements 
+- System level e.g. admin_users, admin_groups, admin_roles
+- Resource level e.g. view, edit, admin
+
 **Access Token and Authorization**
 
 We have already described these new resources and their endpoints in the previous section. 
@@ -718,6 +739,7 @@ As the owner of a resource by default the user posses all the rights to that res
 
 _Example_
 
+Below json shows a group named "engineering" with users ["63c4249f088573c0f4000090", "54a4249f076573c0f4000022"] which was created by user "53c4249f076573c0f4000001".
          {
            "name": "engineering",
            "users": ["63c4249f088573c0f4000090", "54a4249f076573c0f4000022"]
@@ -736,18 +758,18 @@ _Example_
          {
            "accessible_to": [
                               { 
-				"principal": "53c4249f076573c0f4000001",
+				"id": "53c4249f076573c0f4000001",
                                 "type": "user",
 	                        "role": "53c4249f076573c0f4000023",
                                 "entitlements": ["update", "delete"]
                               },
                               { 
-				"principal": "54c4249f076573c0f4000022",
+				"id": "54c4249f076573c0f4000022",
                                 "type": "group",
                                 "entitlements": ["view"]
                               },
                               { 
-				"principal": "53c4249f076573c0f4000001",
+				"id": "53c4249f076573c0f4000001",
                                 "type": "user",
                                 "role": ["admin"]
                               }
