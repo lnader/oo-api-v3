@@ -721,7 +721,9 @@ _Example_
          }
 
 **entitlements**
-There are 2 ways of defining entitlements 
+
+There are 2 ways of defining entitlements
+
 - System level e.g. admin_users, admin_groups, admin_roles
 - Resource level e.g. view, edit, admin
 
@@ -740,6 +742,7 @@ As the owner of a resource by default the user posses all the rights to that res
 _Example_
 
 Below json shows a group named "engineering" with users ["63c4249f088573c0f4000090", "54a4249f076573c0f4000022"] which was created by user "53c4249f076573c0f4000001".
+
          {
            "name": "engineering",
            "users": ["63c4249f088573c0f4000090", "54a4249f076573c0f4000022"]
